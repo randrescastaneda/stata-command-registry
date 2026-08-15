@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Stata Commands Registry Schema",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Stata version covered by this registry (e.g., '19.0')"
+        },
+        "last_updated": {
+          "type": "string",
+          "description": "ISO 8601 timestamp of last update"
+        },
+        "source": {
+          "type": "string",
+          "description": "Source of command list (e.g., 'stata.com/help', 'ssc', 'github')"
+        }
+      },
+      "required": ["version", "source"]
+    },
+    "categories": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string",
+            "description": "Default TextMate scope for commands in this category (e.g., 'keyword.command.official.stata')"
+          },
+          "commands": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Primary command name"
+                },
+                "abbreviations": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "description": "Shortened forms of the command (e.g., ['reg', 'regr'] for 'regress')"
+                },
+                "scope": {
+                  "type": "string",
+                  "description": "Override TextMate scope for this command (overrides category scope)"
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "description": "Alternative command names"
+                },
+                "since": {
+                  "type": "string",
+                  "description": "Stata version when command was introduced"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": ["stable", "experimental", "deprecated"]
+                },
+                "description": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "description": "Help file URL"
+                },
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": ["name"]
+            }
+          }
+        },
+        "required": ["commands"]
+      }
+    }
+  },
+  "required": ["metadata", "categories"]
+}

@@ -1,0 +1,113 @@
+# SSC Community-Contributed Commands Registry
+# 100 most popular SSC packages
+
+metadata:
+  version: "1.0"
+  last_updated: "2026-02-24"
+  source: ssc.stata.com
+
+categories:
+  ssc_popular:
+    description: "100 most popular SSC community-contributed commands"
+    scope: keyword.command.community.stata
+    commands:
+      - name: estout
+      - name: winsor2
+      - name: reghdfe
+      - name: outreg2
+      - name: ftools
+      - name: egenmore
+      - name: asdoc
+      - name: coefplot
+      - name: tscollap
+      - name: tableplot
+      - name: ivreg210
+      - name: ivreg2
+      - name: ivreg29
+      - name: ivreg28
+      - name: psmatch2
+      - name: require
+      - name: sum2docx
+      - name: fre
+      - name: ranktest
+      - name: ivreghdfe
+      - name: logout
+      - name: reg2docx
+      - name: mimrgns
+      - name: rangestat
+      - name: distinct
+      - name: xtabond2
+      - name: mdesc
+      - name: unique
+      - name: csdid
+      - name: xtivreg2
+      - name: fs
+      - name: palettes
+      - name: kpss
+      - name: bcuse
+      - name: ereplace
+      - name: inlist2
+      - name: gtools
+      - name: egranger
+      - name: winsor
+      - name: drdid
+      - name: did_multiplegt_dyn
+      - name: keeporder
+      - name: center
+      - name: jarowinkler
+      - name: corr2docx
+      - name: ppmlhdfe
+      - name: xttest3
+      - name: binscatter
+      - name: spmap
+      - name: carryforward
+      - name: oneclick
+      - name: synth
+      - name: missings
+      - name: metan
+      - name: parmest
+      - name: shp2dta
+      - name: geodist
+      - name: xtivreg28
+      - name: filelist
+      - name: heatplot
+      - name: bdiff
+      - name: labone
+      - name: xtscc
+      - name: rdrobust
+      - name: grstyle
+      - name: tabout
+      - name: gsample
+      - name: boottest
+      - name: event_plot
+      - name: factortest
+      - name: eventstudyinteract
+      - name: xtcsd
+      - name: xsmle
+      - name: ebalance
+      - name: lassopack
+      - name: labutil
+      - name: xtoverid
+      - name: ardl
+      - name: avar
+      - name: hhi
+      - name: _gwtmean
+      - name: rddensity
+      - name: wbopendata
+      - name: eventdd
+      - name: ineqdeco
+      - name: dpplot
+      - name: xtbalance
+      - name: sxpose
+      - name: sencode
+      - name: table1_mc
+      - name: cnssc
+      - name: matsort
+      - name: asreg
+      - name: sdid
+      - name: metabias
+      - name: sendtoslack
+      - name: pystacked
+      - name: mediation
+      - name: utest
+      - name: did_imputation

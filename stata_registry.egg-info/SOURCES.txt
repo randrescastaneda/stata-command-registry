@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+stata_registry/__init__.py
+stata_registry.egg-info/PKG-INFO
+stata_registry.egg-info/SOURCES.txt
+stata_registry.egg-info/dependency_links.txt
+stata_registry.egg-info/requires.txt
+stata_registry.egg-info/top_level.txt
+stata_registry/data/github_contributed_commands.yaml
+stata_registry/data/official_stata_commands.yaml
+stata_registry/data/ssc_contributed_commands.yaml
+tests/test_registry.py

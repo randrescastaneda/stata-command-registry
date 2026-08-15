@@ -1,0 +1,656 @@
+# Official Stata Commands Registry
+# Auto-generated — do not edit manually
+# Run: python .process/scripts/generate_official_yaml.py
+
+metadata:
+  version: "19.0"
+  last_updated: "2026-02-24"
+  source: stata.com/help
+
+categories:
+  control_flow:
+    description: "Control flow and loop keywords"
+    scope: keyword.control.flow.stata
+    commands:
+      - name: foreach
+      - name: forvalues
+      - name: while
+      - name: continue
+      - name: break
+      - name: if
+      - name: else
+      - name: in
+      - name: of
+  prefix_commands:
+    description: "Command prefixes"
+    scope: storage.type.function.stata
+    commands:
+      - name: bysort
+        abbreviations: [by, bys, byso, bysor]
+      - name: statsby
+      - name: rolling
+      - name: bootstrap
+      - name: jackknife
+      - name: permute
+      - name: simulate
+      - name: svy
+      - name: nestreg
+      - name: stepwise
+      - name: xi
+      - name: fp
+      - name: mfp
+      - name: version
+        abbreviations: [ve, ver, vers]
+  prefix_control:
+    description: "Control flow prefix commands"
+    scope: keyword.control.flow.prefix.stata
+    commands:
+      - name: quietly
+        abbreviations: [qui, quiet]
+      - name: noisily
+        abbreviations: [noi, nois, noisi, noisil]
+      - name: capture
+        abbreviations: [cap, capt, captur]
+  storage_program:
+    description: "Program definition"
+    scope: storage.type.function.stata
+    commands:
+      - name: program
+        abbreviations: [pr, pro, prog, progr, progra]
+  storage_scalar:
+    description: "Scalar declarations"
+    scope: storage.type.scalar.stata
+    commands:
+      - name: scalar
+        abbreviations: [sca, scal, scala]
+  storage_matrix:
+    description: "Matrix declarations"
+    scope: storage.type.matrix.stata
+    commands:
+      - name: matrix
+        abbreviations: [mat, matr, matri]
+  program_commands:
+    description: "Programming and ado-file commands"
+    scope: keyword.functions.program.stata
+    commands:
+      - name: syntax
+      - name: args
+      - name: return
+      - name: ereturn
+      - name: sreturn
+      - name: creturn
+      - name: confirm
+      - name: assert
+        abbreviations: [as, ass, asse, asser]
+      - name: error
+      - name: exit
+      - name: end
+      - name: numlist
+      - name: mark
+      - name: markout
+      - name: marksample
+      - name: gettoken
+      - name: tokenize
+      - name: unab
+      - name: tsunab
+      - name: fvunab
+      - name: fvexpand
+      - name: unabcmd
+      - name: findfile
+      - name: nobreak
+      - name: adopath
+      - name: class
+      - name: classutil
+      - name: discard
+      - name: macro
+      - name: postfile
+      - name: postclose
+      - name: post
+      - name: preserve
+      - name: restore
+      - name: plugin
+      - name: timer
+      - name: matsize
+      - name: which
+      - name: about
+      - name: query
+      - name: sysdir
+      - name: personal
+      - name: estimates
+        abbreviations: [est, esti, estim, estima, estimat, estimate]
+  data_management:
+    description: "Data management and general commands"
+    scope: keyword.functions.data.stata
+    commands:
+      - name: generate
+        abbreviations: [ge, gen, gene, gener, genera, generat]
+      - name: egen
+      - name: replace
+      - name: drop
+      - name: keep
+      - name: sort
+      - name: gsort
+      - name: order
+      - name: rename
+        abbreviations: [ren, rena, renam]
+      - name: reshape
+      - name: recode
+      - name: encode
+      - name: decode
+      - name: destring
+      - name: tostring
+      - name: compress
+      - name: expand
+      - name: fillin
+      - name: ipolate
+      - name: mvencode
+      - name: mvdecode
+      - name: separate
+      - name: split
+      - name: stack
+      - name: xpose
+      - name: cross
+      - name: contract
+      - name: collapse
+        abbreviations: [coll, colla, collap, collaps]
+      - name: merge
+        abbreviations: [mer, merg]
+      - name: append
+      - name: joinby
+      - name: display
+        abbreviations: [di]
+      - name: summarize
+        abbreviations: [su, sum, summ, summa, summar, summari, summariz]
+      - name: describe
+        abbreviations: [de, des, desc, descr, descri, describ]
+      - name: list
+        abbreviations: [li]
+      - name: codebook
+      - name: inspect
+      - name: lookfor
+      - name: count
+      - name: duplicates
+      - name: isid
+      - name: levelsof
+      - name: browse
+      - name: edit
+      - name: memory
+      - name: datasignature
+      - name: tabulate
+        abbreviations: [ta, tab, tabu, tabul, tabula, tabulat]
+      - name: tab1
+      - name: tab2
+      - name: tabi
+      - name: table
+      - name: tabstat
+      - name: label
+        abbreviations: [la, lab, labe]
+      - name: notes
+        abbreviations: [note]
+      - name: format
+        abbreviations: [form, forma]
+      - name: char
+      - name: strl
+      - name: save
+        abbreviations: [sa, sav]
+      - name: saveold
+      - name: use
+        abbreviations: [us]
+      - name: sysuse
+      - name: webuse
+      - name: import
+      - name: export
+      - name: infile
+      - name: infix
+      - name: insheet
+      - name: outfile
+      - name: outsheet
+      - name: input
+      - name: zipfile
+      - name: unzipfile
+      - name: checksum
+      - name: hexdump
+      - name: set
+      - name: clear
+      - name: cls
+      - name: cd
+      - name: pwd
+      - name: log
+      - name: more
+      - name: pause
+      - name: sleep
+      - name: mkdir
+      - name: rmdir
+      - name: copy
+      - name: erase
+      - name: type
+      - name: dir
+      - name: sample
+      - name: snapshot
+      - name: fvset
+      - name: xtset
+      - name: tsset
+      - name: stset
+      - name: svyset
+      - name: help
+      - name: search
+      - name: net
+      - name: ssc
+      - name: update
+      - name: adoupdate
+      - name: news
+      - name: do
+      - name: run
+      - name: doedit
+      - name: translate
+      - name: view
+      - name: viewsource
+      - name: predict
+      - name: test
+      - name: testnl
+      - name: lincom
+      - name: nlcom
+      - name: margins
+      - name: marginsplot
+      - name: makecns
+      - name: constraint
+      - name: hausman
+      - name: suest
+      - name: lrtest
+      - name: waldtest
+      - name: mfx
+      - name: dydx
+      - name: misstable
+      - name: ssd
+      - name: graph
+        abbreviations: [gr]
+      - name: twoway
+      - name: histogram
+      - name: scatter
+      - name: line
+      - name: kdensity
+      - name: lowess
+      - name: lpoly
+      - name: sunflower
+      - name: serrbar
+      - name: symplot
+      - name: pnorm
+      - name: qnorm
+      - name: qqplot
+      - name: dotplot
+      - name: spikeplot
+      - name: cchart
+      - name: pchart
+      - name: rchart
+      - name: xchart
+      - name: shewhart
+      - name: npgraph
+      - name: grmap
+      - name: categraph
+  statistics:
+    description: "Statistics and estimation commands"
+    scope: keyword.functions.data.stata
+    commands:
+      - name: correlate
+        abbreviations: [corr, corre, correl, correla, correlat]
+      - name: pwcorr
+      - name: spearman
+      - name: ktau
+      - name: ttest
+      - name: ttesti
+      - name: sdtest
+      - name: sdtesti
+      - name: signrank
+      - name: signtest
+      - name: ranksum
+      - name: median
+      - name: ksmirnov
+      - name: kwallis
+      - name: runtest
+      - name: swilk
+      - name: sfrancia
+      - name: sktest
+      - name: ladder
+      - name: gladder
+      - name: qladder
+      - name: stem
+      - name: lv
+      - name: ci
+      - name: centile
+      - name: pctile
+      - name: xtile
+      - name: total
+      - name: mean
+      - name: ratio
+      - name: proportion
+      - name: hotelling
+      - name: anova
+      - name: manova
+      - name: oneway
+      - name: loneway
+      - name: regress
+        abbreviations: [reg, regr, regre, regres]
+      - name: logit
+      - name: logistic
+      - name: probit
+      - name: clogit
+      - name: cloglog
+      - name: mlogit
+      - name: mprobit
+      - name: ologit
+      - name: oprobit
+      - name: slogit
+      - name: rologit
+      - name: glm
+      - name: binreg
+      - name: poisson
+      - name: nbreg
+      - name: gnbreg
+      - name: zip
+      - name: zinb
+      - name: intreg
+      - name: tobit
+      - name: cnreg
+      - name: truncreg
+      - name: heckman
+      - name: heckprobit
+      - name: treatreg
+      - name: ivregress
+      - name: ivreg
+      - name: nl
+      - name: nlsur
+      - name: qreg
+      - name: iqreg
+      - name: sqreg
+      - name: bsqreg
+      - name: rreg
+      - name: vwls
+      - name: sureg
+      - name: mvreg
+      - name: reg3
+      - name: biprobit
+      - name: tetrachoric
+      - name: asmprobit
+      - name: asroprobit
+      - name: asclogit
+      - name: nlogit
+      - name: boxcox
+      - name: frontier
+      - name: scobit
+      - name: ml
+      - name: maximize
+      - name: tabodds
+      - name: epitab
+      - name: cc
+      - name: cci
+      - name: cs
+      - name: csi
+      - name: ir
+      - name: iri
+      - name: mcc
+      - name: mcci
+  panel_timeseries:
+    description: "Panel data and time-series commands"
+    scope: keyword.functions.data.stata
+    commands:
+      - name: xtreg
+      - name: xtlogit
+      - name: xtprobit
+      - name: xtpoisson
+      - name: xtnbreg
+      - name: xtgee
+      - name: xtmixed
+      - name: xtivreg
+      - name: xtcloglog
+      - name: xtfrontier
+      - name: xthtaylor
+      - name: xtintreg
+      - name: xtrc
+      - name: xttobit
+      - name: xtpcse
+      - name: xtgls
+      - name: xtabond
+      - name: xtregar
+      - name: xtdata
+      - name: xtdescribe
+        abbreviations: [xtdes, xtdesc, xtdescr, xtdescri, xtdescrib]
+      - name: xtsum
+      - name: xttab
+      - name: xttrans
+      - name: xtunitroot
+      - name: xtcointtest
+      - name: xtline
+      - name: xttest0
+      - name: tsline
+      - name: tssmooth
+      - name: arch
+      - name: arima
+      - name: arfima
+      - name: var
+      - name: vec
+      - name: irf
+      - name: fcast
+      - name: varsoc
+      - name: varlmar
+      - name: varstable
+      - name: varnorm
+      - name: vargranger
+      - name: varbasic
+      - name: vecrank
+      - name: newey
+      - name: prais
+      - name: cochrane
+      - name: tsfilter
+      - name: pergram
+      - name: corrgram
+      - name: xcorr
+      - name: pperron
+      - name: dfuller
+      - name: dfgls
+      - name: wntestb
+      - name: wntestq
+      - name: cusum
+      - name: tsreport
+      - name: tsappend
+      - name: tsfill
+  survival:
+    description: "Survival analysis commands"
+    scope: keyword.functions.data.stata
+    commands:
+      - name: streg
+      - name: stcox
+      - name: sts
+      - name: stsum
+      - name: stdes
+      - name: stgen
+      - name: stvary
+      - name: stptime
+      - name: ltable
+      - name: stbase
+      - name: stci
+      - name: stcurve
+      - name: stir
+      - name: stmh
+      - name: stphplot
+      - name: stphtest
+      - name: stpower
+        abbreviations: [stpow, stpowe]
+      - name: strate
+      - name: stsplit
+      - name: stjoin
+      - name: sttocc
+      - name: sttoct
+      - name: snapspan
+      - name: ct
+      - name: ctset
+      - name: cttost
+  estimation_advanced:
+    description: "Advanced estimation and inference commands (Stata 14+)"
+    scope: keyword.command.official.stata
+    commands:
+      - name: assertnested
+      - name: bayes
+      - name: bayesfcast
+      - name: bayesgraph
+      - name: bayesirf
+      - name: bayesmh
+      - name: bayesselect
+      - name: bayesvarstable
+      - name: bcal
+      - name: betareg
+      - name: bicplot
+      - name: bmaregress
+      - name: candisc
+      - name: cate
+      - name: cfprobit
+      - name: cfregress
+      - name: changeeol
+      - name: churdle
+      - name: ciwidth
+      - name: cmclogit
+      - name: cmmixlogit
+      - name: cmmprobit
+      - name: cmrologit
+      - name: cmroprobit
+      - name: cmxtmixlogit
+      - name: coefpath
+      - name: collect
+      - name: concordance
+      - name: contrast
+      - name: cpoisson
+      - name: cvplot
+      - name: demandsys
+      - name: dfactor
+      - name: didregress
+      - name: discrim
+      - name: dsge
+      - name: dsgenl
+      - name: dslogit
+      - name: dspoisson
+      - name: dsregress
+      - name: dtable
+      - name: dyngen
+      - name: eintreg
+      - name: elasticnet
+      - name: eoprobit
+      - name: eprobit
+      - name: eregress
+      - name: etable
+      - name: eteffects
+      - name: etpoisson
+      - name: etregress
+      - name: exlogistic
+      - name: expoisson
+      - name: fmm
+      - name: fracreg
+      - name: frame
+      - name: frames
+      - name: frget
+      - name: frlink
+      - name: gencohort
+      - name: gmm
+      - name: gsbounds
+      - name: gsdesign
+      - name: gsem
+      - name: h2oml
+      - name: h2omlgraph
+      - name: h2omltree
+      - name: hdidregress
+      - name: heckoprobit
+      - name: heckpoisson
+      - name: hetoprobit
+      - name: hetprobit
+      - name: hetregress
+      - name: icd10
+      - name: icd10cm
+      - name: icd10pcs
+      - name: insobs
+      - name: irt
+      - name: irtgraph
+      - name: ivfprobit
+      - name: ivlpirf
+      - name: ivpoisson
+      - name: ivqregress
+      - name: jdbc
+      - name: lasso
+      - name: latebalance
+      - name: lateffects
+      - name: lateoverlap
+      - name: lpirf
+      - name: mca
+      - name: mecloglog
+      - name: mediate
+      - name: meglm
+      - name: meintreg
+      - name: melogit
+      - name: menbreg
+      - name: menl
+      - name: meologit
+      - name: meoprobit
+      - name: mepoisson
+      - name: meprobit
+      - name: mestreg
+      - name: meta
+      - name: metobit
+      - name: mi
+      - name: mixed
+      - name: mlexp
+      - name: mswitch
+      - name: mvtest
+      - name: npregress
+      - name: poivregress
+      - name: pologit
+      - name: popoisson
+      - name: poregress
+      - name: power
+      - name: psdensity
+      - name: putexcel
+      - name: putmata
+      - name: pwcompare
+      - name: pwmean
+      - name: reri
+      - name: rocreg
+      - name: sem
+      - name: spivregress
+      - name: splitsample
+      - name: spregress
+      - name: spxtregress
+      - name: sqrtlasso
+      - name: sspace
+      - name: stcrreg
+      - name: stintcox
+      - name: stintreg
+      - name: stmgintcox
+      - name: stteffects
+      - name: tebalance
+      - name: teffects
+      - name: telasso
+      - name: teoverlap
+      - name: threshold
+      - name: tnbreg
+      - name: tpoisson
+      - name: ucm
+      - name: unicode
+      - name: varmanage
+      - name: vl
+      - name: wildbootstrap
+      - name: xpoivregress
+      - name: xpologit
+      - name: xpopoisson
+      - name: xporegress
+      - name: xtdidregress
+      - name: xtdpd
+      - name: xtdpdsys
+      - name: xteintreg
+      - name: xteoprobit
+      - name: xteprobit
+      - name: xteregress
+      - name: xthdidregress
+      - name: xtheckman
+      - name: xtmlogit
+      - name: xtologit
+      - name: xtoprobit
+      - name: xtstreg
+      - name: xtvar
+      - name: ziologit
+      - name: zioprobit
