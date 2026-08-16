@@ -10,4 +10,10 @@ stata_registry.egg-info/top_level.txt
 stata_registry/data/github_contributed_commands.yaml
 stata_registry/data/official_stata_commands.yaml
 stata_registry/data/ssc_contributed_commands.yaml
+tests/test_abbreviations.py
+tests/test_api.py
+tests/test_data_integrity.py
+tests/test_packaging.py
 tests/test_registry.py
+tests/test_stataglow_migration.py
+tests/test_variable_effect.py
