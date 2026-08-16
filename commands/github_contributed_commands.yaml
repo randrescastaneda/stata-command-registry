@@ -1,0 +1,10 @@
+metadata:
+  version: "19.0"
+  last_updated: "2026-02-12"
+  source: "github"
+
+categories:
+  github_commands:
+    description: "GitHub community-contributed packages"
+    icon: "🐙"
+    commands: []
