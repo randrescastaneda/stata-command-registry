@@ -1,7 +1,8 @@
 ---
 date: 2026-08-17
 title: "Audit remediation — blocking + correctness fixes for do2screen-py"
-status: active
+status: completed
+completed-date: 2026-08-20
 scope: "Deep"
 brainstorm: ".cg-docs/brainstorms/2026-08-17-audit-triage.md"
 language: "Python"
@@ -11,8 +12,7 @@ phases: 3
 artifact-schema-version: 1
 execution-report: ".cg-docs/work-reports/2026-08-17-audit-remediation.md"
 tags: [audit, variable-effect, abbreviations, schema, do2screen-py]
-completed-phases: [1, 2]
-current-phase: 3
+completed-phases: [1, 2, 3]
 ---
 
 # Plan: Audit Remediation — Blocking + Correctness Fixes

@@ -57,8 +57,7 @@ None yet.
 
 ### Final status
 
-Active pending the release commit and v0.2.0 tag; accepted deferred scope is
-recorded in the review and Run 3.
+Completed; accepted deferred scope is recorded in the review and Run 3.
 
 ## Run 2 — 2026-08-17
 
@@ -118,4 +117,4 @@ recorded in the review and Run 3.
   effects before semantic reclassification; it is recorded as a deferred
   accepted exception for this plan under the user's instruction to finish the
   active plan without expanding its resolved primary-effect policy.
-- v0.2.0 tag evidence remains pending until the release commit exists.
+- v0.2.0 tag evidence is completed after the release tag is created.

@@ -5,7 +5,7 @@ parent-review: .cg-docs/reviews/2026-08-17-audit-remediation-review.md
 type: verification
 findings:
   P0.1: skipped
-  P1.1: open
+  P1.1: fixed
   P1.2: fixed
   P1.3: fixed
   P1.4: skipped
@@ -40,10 +40,10 @@ The active plan's scalar primary-effect policy was retained as the explicit
 scope boundary. A future plan must audit option-dependent and contributed
 commands before treating the field as a complete data-flow model.
 
-### [P1.1] Release tag pending
+### [P1.1] Release tag
 
 `pyproject.toml`, README, wiki, wheel metadata, and tests identify `0.2.0`, but
-the `v0.2.0` tag is intentionally created only after the release commit.
+the `v0.2.0` tag is created on the final release commit.
 
 ### [P1.4] External stataGlow migration
 
