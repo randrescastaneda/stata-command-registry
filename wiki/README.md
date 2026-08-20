@@ -41,7 +41,7 @@ pip install stata-registry
 ### Install from source (this repo)
 
 ```bash
-pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.2.0
+pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.3.0
 ```
 
 **Requirements:** Python >= 3.9. The only runtime dependency is
@@ -58,7 +58,7 @@ check-jsonschema --schemafile commands/schema.json commands/*.yaml
 python -m build
 ```
 
-Install the generated `0.2.0` wheel from outside the repository root and verify
+Install the generated `0.3.0` wheel from outside the repository root and verify
 its package metadata, bundled YAML data, and public lookup API before publishing.
 <!-- cg:auto:end -->
 

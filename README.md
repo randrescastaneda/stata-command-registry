@@ -103,7 +103,7 @@ secondary effects are outside this scalar field's primary-effect contract.
 ```bash
 pip install stata-registry          # once published to PyPI
 # or directly from this repo:
-pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.2.0
+pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.3.0
 ```
 
 ### API
@@ -152,7 +152,7 @@ This project follows [Semantic Versioning](https://semver.org/):
 - **MINOR** version for new commands or categories added in a backwards-compatible way.
 - **PATCH** version for corrections to existing entries.
 
-Consumers should pin to a minor version, e.g. `stata-registry>=0.2,<0.3`.
+Consumers should pin to a minor version, e.g. `stata-registry>=0.3,<0.4`.
 
 ---
 

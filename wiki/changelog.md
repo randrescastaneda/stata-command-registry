@@ -6,10 +6,16 @@ This project follows [Semantic Versioning](https://semver.org/):
 - **MINOR** — new commands or categories added in a backwards-compatible way.
 - **PATCH** — corrections to existing entries.
 
-Consumers should pin to a minor version, e.g. `stata-registry>=0.2,<0.3`.
+Consumers should pin to a minor version, e.g. `stata-registry>=0.3,<0.4`.
 
 <!-- cg:auto:version-history -->
 ## Version history
+
+### 0.3.0 — 2026-08-20
+
+- Removed tracked generated package metadata and interpreter bytecode.
+- Added strict packaging tests that keep generated artifacts out of git.
+- Updated release guidance and package metadata for the `v0.3.0` tag.
 
 ### 0.2.0 — 2026-08-20
 

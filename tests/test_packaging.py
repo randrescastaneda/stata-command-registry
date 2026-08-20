@@ -125,7 +125,7 @@ class TestCleanPipInstall:
                 "from pathlib import Path; "
                 "import stata_registry as sr; "
                 "assert 'site-packages' in Path(sr.__file__).resolve().parts; "
-                "assert metadata.version('stata-registry') == '0.2.0'; "
+                "assert metadata.version('stata-registry') == '0.3.0'; "
                 "assert sr.variable_effect('generate') == 'creates'"
             )
             result = subprocess.run(
@@ -137,7 +137,7 @@ class TestCleanPipInstall:
     def test_project_version_is_020(self):
         """The project metadata declares the planned remediation release."""
         pyproject = (_REPO_ROOT / "pyproject.toml").read_text()
-        assert 'version = "0.2.0"' in pyproject
+        assert 'version = "0.3.0"' in pyproject
 
 
 # ---------------------------------------------------------------------------
@@ -159,8 +159,8 @@ class TestVersionTag:
         """README and metadata identify the same remediation release."""
         pyproject = (_REPO_ROOT / "pyproject.toml").read_text()
         readme = (_REPO_ROOT / "README.md").read_text()
-        assert 'version = "0.2.0"' in pyproject
-        assert "@v0.2.0" in readme
+        assert 'version = "0.3.0"' in pyproject
+        assert "@v0.3.0" in readme
 
 
 # ---------------------------------------------------------------------------
