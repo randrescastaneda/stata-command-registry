@@ -98,38 +98,40 @@ class TestEggInfoCommitted:
 # ---------------------------------------------------------------------------
 
 class TestCleanPipInstall:
-    @pytest.mark.xfail(
-        reason=(
-            "The clean pip install test requires running in a fresh venv. "
-            "Set STATA_REGISTRY_CLEAN_VENV to run this test.  Alternatively "
-            "run the manual test described in the audit report."
-        ),
-        strict=False,
-    )
     def test_fresh_pip_install(self):
-        import os
+        import sys
         import tempfile
-        import shutil
-        if not shutil.which("python3"):
-            pytest.skip("No python3 binary")
         with tempfile.TemporaryDirectory() as td:
             venv = Path(td) / "venv"
             subprocess.run(
-                ["python3", "-m", "venv", str(venv)],
+                [sys.executable, "-m", "venv", str(venv)],
                 check=True,
             )
-            pip = str(venv / "bin" / "pip")
+            python = venv / ("Scripts/python.exe" if sys.platform == "win32" else "bin/python")
+            pip = venv / ("Scripts/pip.exe" if sys.platform == "win32" else "bin/pip")
             result = subprocess.run(
-                [pip, "install", str(_REPO_ROOT), "--quiet"],
+                [str(pip), "install", str(_REPO_ROOT), "--quiet"],
                 capture_output=True, text=True,
             )
             assert result.returncode == 0, f"pip install failed: {result.stderr}"
-            py = str(venv / "bin" / "python3")
+            script = (
+                "import importlib.metadata as metadata; "
+                "from pathlib import Path; "
+                "import stata_registry as sr; "
+                "assert 'site-packages' in Path(sr.__file__).resolve().parts; "
+                "assert metadata.version('stata-registry') == '0.2.0'; "
+                "assert sr.variable_effect('generate') == 'creates'"
+            )
             result = subprocess.run(
-                [py, "-c", "import stata_registry as sr; assert sr.is_command('regress')"],
-                capture_output=True, text=True,
+                [str(python), "-c", script],
+                capture_output=True, text=True, cwd=td,
             )
             assert result.returncode == 0, f"Import failed: {result.stderr}"
+
+    def test_project_version_is_020(self):
+        """The project metadata declares the planned remediation release."""
+        pyproject = (_REPO_ROOT / "pyproject.toml").read_text()
+        assert 'version = "0.2.0"' in pyproject
 
 
 # ---------------------------------------------------------------------------
@@ -137,23 +139,22 @@ class TestCleanPipInstall:
 # ---------------------------------------------------------------------------
 
 class TestVersionTag:
-    @pytest.mark.xfail(
-        reason=(
-            "BLOCKING: The README instructs consumers to install at ref v0.1.0 "
-            "but the tag does not exist.  Consumers who follow the README will "
-            "get a git error."
-        ),
-        strict=True,
-    )
     def test_v010_tag_exists(self):
-        """The README references v0.1.0; the tag must exist."""
+        """The immutable baseline tag remains available."""
         result = subprocess.run(
             ["git", "tag", "-l", "v0.1.0"],
             capture_output=True, text=True, cwd=str(_REPO_ROOT),
         )
         assert result.stdout.strip() == "v0.1.0", (
-            "v0.1.0 tag does not exist but is referenced in README install instructions"
+            "v0.1.0 baseline tag does not exist"
         )
+
+    def test_release_reference_matches_version(self):
+        """README and metadata identify the same remediation release."""
+        pyproject = (_REPO_ROOT / "pyproject.toml").read_text()
+        readme = (_REPO_ROOT / "README.md").read_text()
+        assert 'version = "0.2.0"' in pyproject
+        assert "@v0.2.0" in readme
 
 
 # ---------------------------------------------------------------------------

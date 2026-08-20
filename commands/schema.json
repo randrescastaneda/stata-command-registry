@@ -48,7 +48,8 @@
                 "abbreviations": {
                   "type": "array",
                   "items": { "type": "string" },
-                  "description": "Shortened forms of the command (e.g., ['reg', 'regr'] for 'regress')"
+                  "uniqueItems": true,
+                  "description": "All accepted abbreviation forms, listed explicitly (e.g., ['reg', 'regr', 'regre', 'regres'] for 'regress')"
                 },
                 "scope": {
                   "type": "string",
@@ -76,6 +77,19 @@
                 },
                 "category": {
                   "type": "string"
+                },
+                "variable_effect": {
+                  "type": "string",
+                  "enum": [
+                    "creates",
+                    "modifies",
+                    "renames",
+                    "removes",
+                    "labels",
+                    "restructures",
+                    "none"
+                  ],
+                  "description": "Primary effect on variables or dataset structure. Optional for legacy documents; shipped registry entries must provide an enum value."
                 }
               },
               "required": ["name"]
