@@ -1,0 +1,131 @@
+{
+  "edge_count": 2,
+  "edges": [
+    {
+      "edge_type": "decided_from",
+      "source": ".cg-docs/plans/2026-08-17-audit-remediation.md",
+      "target": ".cg-docs/brainstorms/2026-08-17-audit-triage.md",
+      "target_missing": false
+    },
+    {
+      "edge_type": "reviews",
+      "source": ".cg-docs/reviews/2026-08-17-audit-remediation-review.md",
+      "target": ".cg-docs/plans/2026-08-17-audit-remediation.md",
+      "target_missing": false
+    }
+  ],
+  "entities": [
+    {
+      "date": "2026-08-17",
+      "entity_type": "brainstorm",
+      "path": ".cg-docs/brainstorms/2026-08-17-audit-triage.md",
+      "slug": "2026-08-17-audit-triage",
+      "status": "in-progress",
+      "summary": "**pytest results:** 103 passed, 17 xfailed, 2 skipped, 1 xpassed.",
+      "tags": [
+        "audit",
+        "triage",
+        "do2screen-py",
+        "variable-effect",
+        "abbreviations"
+      ],
+      "title": "Audit triage — severity reclassification and decision extraction",
+      "top_keywords": [
+        "us",
+        "abbreviations",
+        "decision",
+        "creates",
+        "variable_effect",
+        "restructures",
+        "describe",
+        "is_prefix",
+        "is_control_flow",
+        "decisions"
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "entity_type": "plan",
+      "path": ".cg-docs/plans/2026-08-17-audit-remediation.md",
+      "slug": "2026-08-17-audit-remediation",
+      "status": "active",
+      "summary": "Model context: `/cg-plan` inherits the model picker or runtime configuration selected on the active platform. If the platform reports Auto or an unknown selection, I will not infer or name a hidden underlying model. If the actual selection matters, inspect the active platform's UI or configuration.",
+      "tags": [
+        "audit",
+        "variable-effect",
+        "abbreviations",
+        "schema",
+        "do2screen-py"
+      ],
+      "title": "Audit remediation — blocking + correctness fixes for do2screen-py",
+      "top_keywords": [
+        "variable_effect",
+        "test scenarios",
+        "abbreviations: []",
+        "us",
+        "creates",
+        "abbreviation",
+        "commands/official_stata_commands.yaml",
+        "restructures",
+        "test_file_is_identical",
+        "stata_registry/data/"
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "entity_type": "review",
+      "path": ".cg-docs/reviews/2026-08-17-audit-remediation-review.md",
+      "slug": "2026-08-17-audit-remediation-review",
+      "status": "",
+      "summary": "**Review mode**: full (requested `mode:verify`; no prior review with fixed findings existed, so normal routing applied; schema and release changes required full-risk coverage)",
+      "tags": [],
+      "title": "2026-08-17-audit-remediation-review",
+      "top_keywords": [
+        "variable_effect",
+        "@cg-reproducibility",
+        "@cg-adversarial",
+        "test",
+        "@cg-testing",
+        "@cg-version-control",
+        "@cg-documentation",
+        "audit_report.md",
+        "typeerror",
+        "@cg-data-quality"
+      ]
+    },
+    {
+      "date": "2026-08-20",
+      "entity_type": "solution",
+      "path": ".cg-docs/solutions/data-quality/2026-08-20-registry-metadata-release-verification.md",
+      "slug": "2026-08-20-registry-metadata-release-verification",
+      "status": "",
+      "summary": "The registry needed to expose `variable_effect` for downstream data-flow tools, correct its explicit abbreviation contract, remove syntax fragments registered as commands, and publish a reproducible release. The initial implementation had weak completeness tests, silent token collisions, a manually synchronized packaged-data copy, stale release guidance, and generated artifacts in the worktree.",
+      "tags": [
+        "yaml-registry",
+        "variable-effect",
+        "abbreviations",
+        "schema",
+        "packaging",
+        "pytest"
+      ],
+      "title": "Make a YAML registry release-safe with explicit metadata and atomic lookups",
+      "top_keywords": [
+        "variable_effect",
+        "metadata",
+        "registry",
+        "yaml",
+        "explicit",
+        "abbreviations",
+        "pytest",
+        "release-safe",
+        "atomic",
+        "lookups"
+      ]
+    }
+  ],
+  "entity_count": 4,
+  "generated": "2026-08-20",
+  "schema_version": "0.2.0",
+  "topic_count": 0,
+  "topics": []
+}
