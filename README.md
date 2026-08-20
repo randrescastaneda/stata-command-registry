@@ -46,6 +46,7 @@ categories:
     commands:
       - name: regress                     # canonical command name (required)
         abbreviations: [reg, regr, regre, regres]  # accepted short forms
+        variable_effect: none              # primary effect on variables/data structure
         aliases: []                       # alternative full names
         since: "3.0"                      # Stata version introduced (optional)
         status: stable                    # stable | experimental | deprecated
@@ -58,13 +59,19 @@ categories:
 | Field | Required | Description |
 |-------|----------|-------------|
 | `name` | ✓ | Primary, canonical command name |
-| `abbreviations` | | Shortest accepted forms (all intermediate forms between the shortest and `name` are implied) |
+| `abbreviations` | | All accepted abbreviation forms (listed explicitly) |
+| `variable_effect` | | Primary effect: `creates`, `modifies`, `renames`, `removes`, `labels`, `restructures`, or `none`; optional for legacy documents, required for shipped entries |
 | `aliases` | | Alternative full names treated identically to `name` |
 | `scope` | | Per-command TextMate scope override (inherits from category if absent) |
 | `since` | | Stata version that introduced the command |
 | `status` | | `stable` (default), `experimental`, or `deprecated` |
 | `description` | | One-line description |
 | `url` | | Link to Stata help page |
+
+`variable_effect` records the command's primary effect. The shipped defaults for
+ambiguous commands are `egen: creates`, `recode: modifies`,
+`merge`/`append`/`sort: restructures`, and `keep: removes`. Option-dependent or
+secondary effects are outside this scalar field's primary-effect contract.
 
 ---
 
@@ -96,7 +103,7 @@ categories:
 ```bash
 pip install stata-registry          # once published to PyPI
 # or directly from this repo:
-pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.1.0
+pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.2.0
 ```
 
 ### API
@@ -123,6 +130,13 @@ sr.is_prefix("regress")             # False
 sr.is_control_flow("foreach")       # True
 sr.is_control_flow("if")            # True
 sr.is_control_flow("regress")       # False
+
+sr.variable_effect("generate")      # "creates"
+sr.variable_effect("replace")       # "modifies"
+sr.variable_effect("drop")          # "removes"
+sr.variable_effect("sort")          # "restructures"
+sr.variable_effect("label")         # "labels"
+sr.variable_effect("regress")       # "none"
 ```
 
 **Constraints:** data and lookup only — no parsing logic, no regular
@@ -138,7 +152,7 @@ This project follows [Semantic Versioning](https://semver.org/):
 - **MINOR** version for new commands or categories added in a backwards-compatible way.
 - **PATCH** version for corrections to existing entries.
 
-Consumers should pin to a minor version, e.g. `stata-registry>=0.1,<0.2`.
+Consumers should pin to a minor version, e.g. `stata-registry>=0.2,<0.3`.
 
 ---
 

@@ -73,6 +73,37 @@ class TestDocumentedAPIExamples:
     def test_is_control_flow_regress(self):
         assert self.sr.is_control_flow("regress") is False
 
+    def test_variable_effect_examples(self):
+        assert self.sr.variable_effect("generate") == "creates"
+        assert self.sr.variable_effect("replace") == "modifies"
+        assert self.sr.variable_effect("drop") == "removes"
+        assert self.sr.variable_effect("sort") == "restructures"
+        assert self.sr.variable_effect("label") == "labels"
+        assert self.sr.variable_effect("regress") == "none"
+
+
+class TestIndexCollisionHandling:
+    """Conflicting names, abbreviations, and aliases fail during indexing."""
+
+    @pytest.mark.parametrize(
+        "commands",
+        [
+            [{"name": "alpha", "abbreviations": ["x"]},
+             {"name": "beta", "abbreviations": ["x"]}],
+            [{"name": "alpha", "aliases": ["x"]},
+             {"name": "beta", "aliases": ["x"]}],
+            [{"name": "x"}, {"name": "beta", "abbreviations": ["x"]}],
+            [{"name": "alpha", "abbreviations": ["x"]},
+             {"name": "beta", "aliases": ["x"]}],
+            [{"name": "alpha"}, {"name": "alpha"}],
+        ],
+    )
+    def test_conflicting_tokens_raise(self, commands):
+        import stata_registry as sr
+        document = {"categories": {"test": {"commands": commands}}}
+        with pytest.raises(ValueError, match="maps to both|Duplicate registry command name"):
+            sr._build_index([document])
+
 
 # ---------------------------------------------------------------------------
 # 4.2 — Semantic coupling: is_prefix and is_control_flow derived from category keys

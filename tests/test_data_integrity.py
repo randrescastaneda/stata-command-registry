@@ -118,51 +118,52 @@ class TestUniqueness:
     def test_no_abbreviation_collides_with_name(self):
         """An abbreviation must not collide with another command's name."""
         all_names: set[str] = set()
-        all_abbrevs: dict[str, str] = {}
+        all_abbrevs: dict[str, set[str]] = {}
         for _name, cmd, _fn in _load_all_entries():
             if _name and _name != "<MISSING>":
                 all_names.add(_name)
             for abbr in cmd.get("abbreviations") or []:
-                all_abbrevs[abbr] = cmd["name"]
+                all_abbrevs.setdefault(abbr, set()).add(cmd["name"])
 
         collisions = {
-            abbr: maps_to
+            abbr: sorted(maps_to)
             for abbr, maps_to in all_abbrevs.items()
-            if abbr in all_names and abbr != maps_to
+            if abbr in all_names and maps_to != {abbr}
         }
         assert not collisions, f"Abbreviation-name collisions: {collisions}"
 
     def test_no_alias_collides_with_name(self):
         """An alias must not collide with another command's name."""
         all_names: set[str] = set()
-        all_aliases: dict[str, str] = {}
+        all_aliases: dict[str, set[str]] = {}
         for _name, cmd, _fn in _load_all_entries():
             if _name and _name != "<MISSING>":
                 all_names.add(_name)
             for alias in cmd.get("aliases") or []:
-                all_aliases[alias] = cmd["name"]
+                all_aliases.setdefault(alias, set()).add(cmd["name"])
 
         collisions = {
-            alias: maps_to
+            alias: sorted(maps_to)
             for alias, maps_to in all_aliases.items()
-            if alias in all_names and alias != maps_to
+            if alias in all_names and maps_to != {alias}
         }
         assert not collisions, f"Alias-name collisions: {collisions}"
 
     def test_no_abbreviation_collides_with_alias(self):
         """An abbreviation must not collide with a different command's alias."""
-        all_abbrevs: dict[str, str] = {}
-        all_aliases: dict[str, str] = {}
+        all_abbrevs: dict[str, set[str]] = {}
+        all_aliases: dict[str, set[str]] = {}
         for _name, cmd, _fn in _load_all_entries():
             for abbr in cmd.get("abbreviations") or []:
-                all_abbrevs[abbr] = cmd["name"]
+                all_abbrevs.setdefault(abbr, set()).add(cmd["name"])
             for alias in cmd.get("aliases") or []:
-                all_aliases[alias] = cmd["name"]
+                all_aliases.setdefault(alias, set()).add(cmd["name"])
 
         collisions = {
-            abbr: (all_abbrevs[abbr], all_aliases[abbr])
+            abbr: (sorted(all_abbrevs[abbr]), sorted(all_aliases[abbr]))
             for abbr in all_abbrevs
-            if abbr in all_aliases and all_abbrevs[abbr] != all_aliases[abbr]
+            if abbr in all_aliases
+            and all_abbrevs[abbr] != all_aliases[abbr]
         }
         assert not collisions, f"Abbreviation-alias collisions: {collisions}"
 
@@ -234,7 +235,7 @@ class TestCoverageClaim:
             len(cat.get("commands", []))
             for cat in doc["categories"].values()
         )
-        assert count == 569, f"Official commands: expected 569, got {count}"
+        assert count == 567, f"Official commands: expected 567, got {count}"
 
     def test_ssc_count(self):
         doc = yaml.safe_load(

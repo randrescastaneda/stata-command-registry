@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "compound-gpid-active-state-v1",
+  "updatedAt": "2026-08-20T10:52:39-04:00",
+  "workflow": "/cg-work",
+  "status": "completed",
+  "branch": "feat/audit-remediation",
+  "plan": ".cg-docs/plans/2026-08-17-audit-remediation.md",
+  "executionReport": ".cg-docs/work-reports/2026-08-17-audit-remediation.md",
+  "currentPhase": 3,
+  "evidenceStatus": [
+    {"id": "V1", "status": "passed", "artifact": "git tag v0.1.0"},
+    {"id": "V3", "status": "passed", "artifact": "pytest schema validation tests"},
+    {"id": "V4", "status": "passed", "artifact": "tests/test_variable_effect.py"},
+    {"id": "V5", "status": "passed", "artifact": "pytest tests/ -q"},
+    {"id": "V6", "status": "passed", "artifact": "tests/test_abbreviations.py"},
+    {"id": "V7", "status": "passed", "artifact": "tests/test_abbreviations.py"},
+    {"id": "V8", "status": "passed", "artifact": "tests/test_abbreviations.py"},
+    {"id": "V9", "status": "passed", "artifact": "tests/test_packaging.py"},
+    {"id": "V10", "status": "passed", "artifact": "pyproject.toml and wheel metadata"},
+    {"id": "V2", "status": "passed", "artifact": "v0.2.0 tag on final release commit"}
+  ],
+  "unresolvedDecisions": [],
+  "artifactRefs": [
+    {"kind": "plan", "path": ".cg-docs/plans/2026-08-17-audit-remediation.md", "status": "completed"},
+    {"kind": "work-report", "path": ".cg-docs/work-reports/2026-08-17-audit-remediation.md", "status": "completed"},
+    {"kind": "review", "path": ".cg-docs/reviews/2026-08-17-audit-remediation-review.md", "status": "triaged"},
+    {"kind": "verification-review", "path": ".cg-docs/reviews/2026-08-17-audit-remediation-verify-review.md", "status": "completed"}
+  ],
+  "nextCommand": "/cg-verify-pr"
+}

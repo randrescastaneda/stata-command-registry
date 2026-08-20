@@ -61,30 +61,13 @@ class TestAbbreviationSemantics:
 class TestNonAbbreviableCommands:
     """Commands that Stata forbids abbreviating must have explicit signal."""
 
-    @pytest.mark.xfail(
-        reason=(
-            "Defect: replace has no 'abbreviations' field.  There is no way to "
-            "distinguish 'abbreviations deliberately forbidden' from 'entry not "
-            "yet completed'.  An explicit abbreviations: [] meaning 'none allowed' "
-            "is required; absence should mean 'unknown'."
-        ),
-        strict=False,
-    )
     def test_replace_abbreviations_field_present(self):
-        """replace must have an explicit abbreviations field (defect if absent)."""
+        """replace has an explicit abbreviations field."""
         _assert_cmd_has_abbreviations_field("replace")
 
-    @pytest.mark.xfail(
-        reason="Same defect as replace: egen must have explicit abbreviations: []",
-        strict=False,
-    )
     def test_egen_abbreviations_field_present(self):
         _assert_cmd_has_abbreviations_field("egen")
 
-    @pytest.mark.xfail(
-        reason="Same defect: destring must have explicit abbreviations: []",
-        strict=False,
-    )
     def test_destring_abbreviations_field_present(self):
         _assert_cmd_has_abbreviations_field("destring")
 
@@ -116,14 +99,6 @@ class TestRealStataAbbreviations:
     Some commands cannot be abbreviated at all.
     """
 
-    @pytest.mark.xfail(
-        reason=(
-            "Defect: 'g' is missing from generate's abbreviations list. "
-            "The YAML lists [ge, gen, gene, gener, genera, generat] but Stata "
-            "accepts 'g' as the shortest abbreviation for generate."
-        ),
-        strict=True,
-    )
     def test_generate_abbreviates_to_g(self):
         """generate abbreviates to 'g' in Stata."""
         import stata_registry as sr
@@ -131,14 +106,6 @@ class TestRealStataAbbreviations:
             "generate must be reachable via 'g' — the shortest Stata abbreviation"
         )
 
-    @pytest.mark.xfail(
-        reason=(
-            "Defect: 'g' is missing from generate's abbreviations list. "
-            "The YAML lists [ge, gen, gene, gener, genera, generat] but Stata "
-            "accepts 'g' as the shortest abbreviation for generate."
-        ),
-        strict=True,
-    )
     def test_generate_shortest_abbreviation_in_yaml(self):
         """The YAML must include 'g' as an abbreviation for generate."""
         doc = yaml.safe_load(
@@ -203,13 +170,6 @@ class TestRealStataAbbreviations:
                     f"(destring is not abbreviable in Stata)"
                 )
 
-    @pytest.mark.xfail(
-        reason=(
-            "Stata abbreviates 'describe' to 'd', but the YAML lists "
-            "[de, des, desc, descr, descri, describ] — missing 'd'."
-        ),
-        strict=True,
-    )
     def test_describe_abbreviation_d_in_yaml(self):
         """describe must list 'd' as an abbreviation per Stata's rules."""
         doc = yaml.safe_load(
@@ -222,13 +182,6 @@ class TestRealStataAbbreviations:
                     return
         pytest.fail("describe not found")
 
-    @pytest.mark.xfail(
-        reason=(
-            "Stata abbreviates 'list' to 'l' (since Stata 14).  The YAML "
-            "lists [li] but not 'l'.  Verify current Stata behaviour before fixing."
-        ),
-        strict=True,
-    )
     def test_list_abbreviation_l_in_yaml(self):
         """list must list 'l' as an abbreviation per recent Stata rules."""
         doc = yaml.safe_load(
@@ -246,23 +199,36 @@ class TestRealStataAbbreviations:
 # 2.2 — Discrepancy documentation
 # ---------------------------------------------------------------------------
 
-@pytest.mark.xfail(
-    reason=(
-        "BUG: The README field reference says abbreviations lists only the "
-        "'shortest accepted form' with intermediates implied.  But the actual "
-        "YAML data enumerates ALL intermediate forms (e.g. regress has "
-        "[reg, regr, regre, regres]).  And the reader only registers forms "
-        "explicitly present in the YAML, with no generation of intermediates. "
-        "The field reference text is inconsistent with both the data and the code."
-    ),
-    strict=False,
-)
 def test_readme_field_reference_matches_code():
-    """
-    The README says shortest-abbreviation-only; the code says enumeration.
-    This test documents the discrepancy — it fails because the documentation
-    is wrong, not because of a code bug.
-    """
+    """README documents the explicit abbreviation enumeration contract."""
     readme = (_REPO_ROOT / "README.md").read_text()
-    # The README says abbreviations lists the shortest accepted form
-    assert "shortest" not in readme.lower() or "implied" not in readme.lower()
+    assert "All accepted abbreviation forms (listed explicitly)" in readme
+
+
+# ---------------------------------------------------------------------------
+# R-10 — Evidence: in/of removal, use abbreviation us removal
+# ---------------------------------------------------------------------------
+
+class TestRemovedEntriesAndAbbreviations:
+    """B-6/C-2: in and of are not standalone commands; C-4: use's us removed."""
+
+    def test_in_not_a_command(self):
+        import stata_registry as sr
+        assert not sr.is_command("in"), "'in' should not be a registered command"
+
+    def test_of_not_a_command(self):
+        import stata_registry as sr
+        assert not sr.is_command("of"), "'of' should not be a registered command"
+
+    def test_foreach_still_a_command(self):
+        import stata_registry as sr
+        assert sr.is_command("foreach")
+
+    def test_us_not_a_command(self):
+        import stata_registry as sr
+        assert not sr.is_command("us"), "'us' should not resolve to 'use'"
+
+    def test_use_still_commands(self):
+        import stata_registry as sr
+        assert sr.is_command("use")
+        assert sr.canonical_command("use") == "use"
