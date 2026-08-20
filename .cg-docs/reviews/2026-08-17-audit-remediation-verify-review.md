@@ -10,7 +10,7 @@ findings:
   P1.3: fixed
   P1.4: skipped
   P2.1: skipped
-  P2.2: skipped
+  P2.2: fixed
   P2.3: skipped
   P2.4: skipped
 ---
@@ -50,11 +50,14 @@ the `v0.2.0` tag is created on the final release commit.
 The migration remains outside this plan's scope and is not required for the
 `stata-registry` package release.
 
-### [P2.1-P2.4] Deferred hygiene/design items
+### [P2.1, P2.3-P2.4] Deferred hygiene/design items
 
-Tracked generated-artifact cleanup, build-time source/package synchronization,
-test dependency locking, and category-derived prefix/control-flow identity are
-recorded in the parent review and remain deferred.
+Build-time source/package synchronization, test dependency locking, and
+category-derived prefix/control-flow identity are recorded in the parent review
+and remain deferred.
+
+Tracked generated-artifact cleanup is fixed by the hygiene commit and strict
+packaging tests.
 
 ## Fixed Verification Findings
 

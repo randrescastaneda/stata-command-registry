@@ -87,7 +87,7 @@ Completed; accepted deferred scope is recorded in the review and Run 3.
 ### Review
 
 - Review report: `.cg-docs/reviews/2026-08-17-audit-remediation-review.md`.
-- Findings: P0.1 deferred; P1.1-P1.6 fixed; P2.1 fixed; P2.2-P2.3
+- Findings: P0.1 deferred; P1.1-P1.6 fixed; P2.1-P2.2 fixed; P2.3
   deferred; P2.4-P2.5 fixed; P2.6 deferred; P2.7 fixed.
 - No protected artifact deletion, replacement, rename, or movement was
   recommended.
@@ -108,6 +108,8 @@ Completed; accepted deferred scope is recorded in the review and Run 3.
 - Schema validation: passed with `check-jsonschema`.
 - Wheel build and isolated wheel install: passed.
 - `git diff --check`: passed.
+- Generated `egg-info` and bytecode artifacts are removed from git; strict
+  packaging tests enforce that they remain untracked.
 - Light verification review: fixed scopes converged; P0.1 and explicitly
   deferred hygiene/design findings remain recorded exceptions.
 

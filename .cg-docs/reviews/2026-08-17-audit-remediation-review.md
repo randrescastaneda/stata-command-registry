@@ -12,7 +12,7 @@ findings:
   P1.5: fixed
   P1.6: fixed
   P2.1: fixed
-  P2.2: skipped
+  P2.2: fixed
   P2.3: skipped
   P2.4: fixed
   P2.5: fixed
@@ -26,7 +26,7 @@ findings:
 
 **Files reviewed**: 14 tracked implementation files plus the active plan, audit artifacts, wiki files, and package metadata
 
-**Findings**: 14 (P0: 1 deferred, P1: 6 fixed, P2: 4 fixed and 3 deferred, P3: 0)
+**Findings**: 14 (P0: 1 deferred, P1: 6 fixed, P2: 5 fixed and 2 deferred, P3: 0)
 
 ## P0 — BLOCKING
 
@@ -124,7 +124,7 @@ findings:
 
 **Issue**: These are generated outputs and interpreter-specific bytecode, not source changes. They create noisy, stale, non-portable release diffs.
 
-**Fix**: Exclude them from the release staging set; retain existing ignore rules. Removing already-tracked artifacts is deferred because it is an out-of-scope hygiene change in the active plan.
+**Fix**: Remove tracked generated artifacts and enforce their absence with packaging tests while retaining the existing ignore rules.
 
 ### [P2.3] Source/package YAML duplication remains manually synchronized
 
@@ -192,7 +192,7 @@ findings:
 The user instructed the work to be finished. Under the active plan's resolved
 scalar primary-effect policy, P0.1 is deferred rather than reclassified by
 guesswork; a future plan should audit option-dependent and contributed-command
-effects. H-1/H-2 and undeclared test-environment dependencies remain deferred
+effects. H-1 and undeclared test-environment dependencies remain deferred
 scope. The independent correctness, packaging, documentation, collision,
 concurrency, malformed-input, and completeness fixes are implemented and
 verified below.
@@ -213,10 +213,11 @@ verified below.
   `AUDIT_REPORT.md` remains a historical snapshot.
 - P2.5: missing-field behavior uses an isolated synthetic index fixture.
 - P2.7: boolean predicates return `False` for non-string input.
+- P2.2: tracked egg-info and bytecode were removed; packaging tests enforce
+  generated-artifact exclusion.
 
 ### Deferred
 
 - P0.1: broader semantic audit of conditional and contributed commands.
-- P2.2: tracked generated-artifact cleanup, deferred hygiene item H-2.
 - P2.3: build-time source/package synchronization, deferred hygiene item H-1.
 - P2.6: test dependency declaration and lockfile, outside the active plan.

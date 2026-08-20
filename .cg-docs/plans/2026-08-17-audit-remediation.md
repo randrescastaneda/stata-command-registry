@@ -313,7 +313,8 @@ added to a follow-up plan.
 ## Out of Scope
 
 - H-1: Build step to automate `commands/` → `data/` copy.
-- H-2: Remove `stata_registry.egg-info/` from git.
+- H-2: Remove `stata_registry.egg-info/` from git. Completed in the hygiene
+  follow-up commit; strict tests now enforce generated-artifact exclusion.
 - H-3: Remove stale xfail on `test_fresh_pip_install`.
 - S-1: Explicit `is_prefix`/`is_control_flow` boolean fields.
 - B-8: stataGlow migration (external repository).
@@ -357,7 +358,7 @@ command effects.
 - **Allowed**: Schema additions (optional fields), YAML data edits, reader
   API additions, test additions/modifications, README/schema description
   updates, version bump, git tags.
-- **Out of scope**: Hygiene items (H-1, H-2, H-3, S-1), stataGlow migration,
+- **Out of scope**: Hygiene items H-1, H-3, S-1, stataGlow migration,
   full abbreviation audit of 640 commands.
 
 ### Iteration Policy
