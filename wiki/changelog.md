@@ -6,10 +6,22 @@ This project follows [Semantic Versioning](https://semver.org/):
 - **MINOR** — new commands or categories added in a backwards-compatible way.
 - **PATCH** — corrections to existing entries.
 
-Consumers should pin to a minor version, e.g. `stata-registry>=0.3,<0.4`.
+Consumers should pin to a minor version, e.g. `stata-registry>=0.4,<0.5`.
 
 <!-- cg:auto:version-history -->
 ## Version history
+
+### 0.4.0 — 2026-08-21
+
+- Added the explicit `include_driver` boolean field to every shipped command
+  entry and defined it in the JSON schema.
+- Classified `do`, `run`, and `include` as source drivers using official
+  StataNow 19 help documentation.
+- Added `is_include(token)`, which resolves canonical names, abbreviations, and
+  aliases and returns `False` for unknown or non-driver tokens.
+- Added a reproducible source-to-bundled-data generation/check pipeline and
+  documented that source-driver metadata is independent of `variable_effect`.
+- Bumped the package version to `0.4.0`.
 
 ### 0.3.0 — 2026-08-20
 

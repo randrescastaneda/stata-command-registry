@@ -7,7 +7,9 @@ git tag, and test suite completeness.
 from __future__ import annotations
 
 import filecmp
+import importlib.util
 import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -18,6 +20,15 @@ _COMMANDS_DIR = _REPO_ROOT / "commands"
 _DATA_DIR = _REPO_ROOT / "stata_registry" / "data"
 _EGG_INFO_DIR = _REPO_ROOT / "stata_registry.egg-info"
 _TESTS_DIR = _REPO_ROOT / "tests"
+
+
+def _load_generator():
+    path = _REPO_ROOT / "scripts" / "generate_registry_data.py"
+    spec = importlib.util.spec_from_file_location("registry_generator", path)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 # ---------------------------------------------------------------------------
@@ -46,6 +57,38 @@ class TestDuplicateData:
         assert filecmp.cmp(f1, f2, shallow=False), (
             f"{filename} differs between commands/ and stata_registry/data/"
         )
+
+    def test_generation_check_passes(self):
+        """The checked-in source and bundled data pass the generator check."""
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(_REPO_ROOT / "scripts" / "generate_registry_data.py"),
+                "--check",
+            ],
+            capture_output=True,
+            text=True,
+            cwd=str(_REPO_ROOT),
+        )
+        assert result.returncode == 0, result.stderr
+
+    def test_sdist_manifest_contains_generation_pipeline(self):
+        """Source releases retain the evidence and generator used to build data."""
+        manifest = (_REPO_ROOT / "MANIFEST.in").read_text()
+        assert "recursive-include commands *.yaml *.json" in manifest
+        assert "include scripts/generate_registry_data.py" in manifest
+        assert "include scripts/source_driver_evidence.yaml" in manifest
+
+    def test_generator_handles_quoted_names_without_newline(self):
+        """The line-preserving generator safely handles valid YAML edge cases."""
+        generator = _load_generator()
+        text = "categories:\n  test:\n    commands:\n      - name: 'do'"
+        generated = generator._annotate_source_text(
+            text, {"do": {"include_driver": True}}
+        )
+        assert generated.endswith("include_driver: true\n")
+        document = generator.yaml.safe_load(generated)
+        assert document["categories"]["test"]["commands"][0]["name"] == "do"
 
     @pytest.mark.xfail(
         reason=(
@@ -125,8 +168,11 @@ class TestCleanPipInstall:
                 "from pathlib import Path; "
                 "import stata_registry as sr; "
                 "assert 'site-packages' in Path(sr.__file__).resolve().parts; "
-                "assert metadata.version('stata-registry') == '0.3.0'; "
-                "assert sr.variable_effect('generate') == 'creates'"
+                "assert metadata.version('stata-registry') == '0.4.0'; "
+                "assert sr.variable_effect('generate') == 'creates'; "
+                "assert sr.is_include('do') is True; "
+                "assert sr.is_include('run') is True; "
+                "assert sr.is_include('include') is True"
             )
             result = subprocess.run(
                 [str(python), "-c", script],
@@ -134,10 +180,10 @@ class TestCleanPipInstall:
             )
             assert result.returncode == 0, f"Import failed: {result.stderr}"
 
-    def test_project_version_is_020(self):
-        """The project metadata declares the planned remediation release."""
+    def test_project_version_is_040(self):
+        """The project metadata declares the source-driver release."""
         pyproject = (_REPO_ROOT / "pyproject.toml").read_text()
-        assert 'version = "0.3.0"' in pyproject
+        assert 'version = "0.4.0"' in pyproject
 
 
 # ---------------------------------------------------------------------------
@@ -159,8 +205,8 @@ class TestVersionTag:
         """README and metadata identify the same remediation release."""
         pyproject = (_REPO_ROOT / "pyproject.toml").read_text()
         readme = (_REPO_ROOT / "README.md").read_text()
-        assert 'version = "0.3.0"' in pyproject
-        assert "@v0.3.0" in readme
+        assert 'version = "0.4.0"' in pyproject
+        assert "@v0.4.0" in readme
 
 
 # ---------------------------------------------------------------------------

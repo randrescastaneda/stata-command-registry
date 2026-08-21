@@ -1,0 +1,19 @@
+# Upstream evidence for commands that execute another Stata source file.
+# Source: StataNow 19 official help pages, accessed 2026-08-21.
+metadata:
+  version: "19.0"
+  source: "https://www.stata.com/help.cgi"
+
+commands:
+  - name: do
+    include_driver: true
+    url: "https://www.stata.com/help.cgi?do"
+    evidence: "[R] do -- Execute commands from a file; do causes Stata to execute commands stored in filename."
+  - name: run
+    include_driver: true
+    url: "https://www.stata.com/help.cgi?run"
+    evidence: "[R] do -- Execute commands from a file; run causes Stata to execute commands stored in filename."
+  - name: include
+    include_driver: true
+    url: "https://www.stata.com/help.cgi?include"
+    evidence: "[P] include -- Include commands from file; include is a variation on do and run that causes Stata to execute commands stored in filename."

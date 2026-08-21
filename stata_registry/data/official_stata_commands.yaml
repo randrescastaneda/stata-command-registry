@@ -1,6 +1,6 @@
 # Official Stata Commands Registry
 # Auto-generated — do not edit manually
-# Run: python .process/scripts/generate_official_yaml.py
+# Run: python scripts/generate_registry_data.py
 
 metadata:
   version: "19.0"
@@ -13,51 +13,72 @@ categories:
     scope: keyword.control.flow.stata
     commands:
       - name: foreach
+        include_driver: false
         variable_effect: none
       - name: forvalues
+        include_driver: false
         variable_effect: none
       - name: while
+        include_driver: false
         variable_effect: none
       - name: continue
+        include_driver: false
         variable_effect: none
       - name: break
+        include_driver: false
         variable_effect: none
       - name: if
+        include_driver: false
         variable_effect: none
       - name: else
+        include_driver: false
         variable_effect: none
   prefix_commands:
     description: "Command prefixes"
     scope: storage.type.function.stata
     commands:
       - name: bysort
+        include_driver: false
         variable_effect: none
         abbreviations: [by, bys, byso, bysor]
       - name: statsby
+        include_driver: false
         variable_effect: none
       - name: rolling
+        include_driver: false
         variable_effect: none
       - name: bootstrap
+        include_driver: false
         variable_effect: none
       - name: jackknife
+        include_driver: false
         variable_effect: none
       - name: permute
+        include_driver: false
         variable_effect: none
       - name: simulate
+        include_driver: false
         variable_effect: none
       - name: svy
+        include_driver: false
         variable_effect: none
       - name: nestreg
+        include_driver: false
         variable_effect: none
       - name: stepwise
+        include_driver: false
         variable_effect: none
       - name: xi
+        include_driver: false
         variable_effect: none
       - name: fp
+        include_driver: false
         variable_effect: none
       - name: mfp
+        include_driver: false
         variable_effect: none
       - name: version
+        include_driver: false
         variable_effect: none
         abbreviations: [ve, ver, vers]
   prefix_control:
@@ -65,12 +86,15 @@ categories:
     scope: keyword.control.flow.prefix.stata
     commands:
       - name: quietly
+        include_driver: false
         variable_effect: none
         abbreviations: [qui, quiet]
       - name: noisily
+        include_driver: false
         variable_effect: none
         abbreviations: [noi, nois, noisi, noisil]
       - name: capture
+        include_driver: false
         variable_effect: none
         abbreviations: [cap, capt, captur]
   storage_program:
@@ -78,6 +102,7 @@ categories:
     scope: storage.type.function.stata
     commands:
       - name: program
+        include_driver: false
         variable_effect: none
         abbreviations: [pr, pro, prog, progr, progra]
   storage_scalar:
@@ -85,6 +110,7 @@ categories:
     scope: storage.type.scalar.stata
     commands:
       - name: scalar
+        include_driver: false
         variable_effect: none
         abbreviations: [sca, scal, scala]
   storage_matrix:
@@ -92,6 +118,7 @@ categories:
     scope: storage.type.matrix.stata
     commands:
       - name: matrix
+        include_driver: false
         variable_effect: none
         abbreviations: [mat, matr, matri]
   program_commands:
@@ -99,91 +126,134 @@ categories:
     scope: keyword.functions.program.stata
     commands:
       - name: syntax
+        include_driver: false
         variable_effect: none
       - name: args
+        include_driver: false
         variable_effect: none
       - name: return
+        include_driver: false
         variable_effect: none
       - name: ereturn
+        include_driver: false
         variable_effect: none
       - name: sreturn
+        include_driver: false
         variable_effect: none
       - name: creturn
+        include_driver: false
         variable_effect: none
       - name: confirm
+        include_driver: false
         variable_effect: none
       - name: assert
+        include_driver: false
         variable_effect: none
         abbreviations: [as, ass, asse, asser]
       - name: error
+        include_driver: false
         variable_effect: none
       - name: exit
+        include_driver: false
         variable_effect: none
       - name: end
+        include_driver: false
         variable_effect: none
       - name: numlist
+        include_driver: false
         variable_effect: none
       - name: mark
+        include_driver: false
         variable_effect: none
       - name: markout
+        include_driver: false
         variable_effect: none
       - name: marksample
+        include_driver: false
         variable_effect: none
       - name: gettoken
+        include_driver: false
         variable_effect: none
       - name: tokenize
+        include_driver: false
         variable_effect: none
       - name: unab
+        include_driver: false
         variable_effect: none
       - name: tsunab
+        include_driver: false
         variable_effect: none
       - name: fvunab
+        include_driver: false
         variable_effect: none
       - name: fvexpand
+        include_driver: false
         variable_effect: none
       - name: unabcmd
+        include_driver: false
         variable_effect: none
       - name: findfile
+        include_driver: false
         variable_effect: none
       - name: nobreak
+        include_driver: false
         variable_effect: none
       - name: adopath
+        include_driver: false
         variable_effect: none
       - name: class
+        include_driver: false
         variable_effect: none
       - name: classutil
+        include_driver: false
         variable_effect: none
       - name: discard
+        include_driver: false
         variable_effect: none
       - name: macro
+        include_driver: false
         variable_effect: none
       - name: postfile
+        include_driver: false
         variable_effect: none
       - name: postclose
+        include_driver: false
         variable_effect: none
       - name: post
+        include_driver: false
         variable_effect: none
       - name: preserve
+        include_driver: false
         variable_effect: none
       - name: restore
+        include_driver: false
         variable_effect: none
       - name: plugin
+        include_driver: false
         variable_effect: none
       - name: timer
+        include_driver: false
         variable_effect: none
       - name: matsize
+        include_driver: false
         variable_effect: none
       - name: which
+        include_driver: false
         variable_effect: none
       - name: about
+        include_driver: false
         variable_effect: none
       - name: query
+        include_driver: false
         variable_effect: none
       - name: sysdir
+        include_driver: false
         variable_effect: none
       - name: personal
+        include_driver: false
         variable_effect: none
       - name: estimates
+        include_driver: false
         variable_effect: none
         abbreviations: [est, esti, estim, estima, estimat, estimate]
   data_management:
@@ -191,1034 +261,1534 @@ categories:
     scope: keyword.functions.data.stata
     commands:
       - name: generate
+        include_driver: false
         variable_effect: creates
         abbreviations: [g, ge, gen, gene, gener, genera, generat]
       - name: egen
+        include_driver: false
         variable_effect: creates
         abbreviations: []
       - name: replace
+        include_driver: false
         variable_effect: modifies
         abbreviations: []
       - name: drop
+        include_driver: false
         variable_effect: removes
       - name: keep
+        include_driver: false
         variable_effect: removes
       - name: sort
+        include_driver: false
         variable_effect: restructures
       - name: gsort
+        include_driver: false
         variable_effect: restructures
       - name: order
+        include_driver: false
         variable_effect: restructures
       - name: rename
+        include_driver: false
         variable_effect: renames
         abbreviations: [ren, rena, renam]
       - name: reshape
+        include_driver: false
         variable_effect: restructures
       - name: recode
+        include_driver: false
         variable_effect: modifies
       - name: encode
+        include_driver: false
         variable_effect: creates
       - name: decode
+        include_driver: false
         variable_effect: creates
       - name: destring
+        include_driver: false
         variable_effect: creates
         abbreviations: []
       - name: tostring
+        include_driver: false
         variable_effect: creates
       - name: compress
+        include_driver: false
         variable_effect: modifies
       - name: expand
+        include_driver: false
         variable_effect: modifies
       - name: fillin
+        include_driver: false
         variable_effect: creates
       - name: ipolate
+        include_driver: false
         variable_effect: creates
       - name: mvencode
+        include_driver: false
         variable_effect: modifies
       - name: mvdecode
+        include_driver: false
         variable_effect: modifies
       - name: separate
+        include_driver: false
         variable_effect: creates
       - name: split
+        include_driver: false
         variable_effect: creates
       - name: stack
+        include_driver: false
         variable_effect: restructures
       - name: xpose
+        include_driver: false
         variable_effect: restructures
       - name: cross
+        include_driver: false
         variable_effect: restructures
       - name: contract
+        include_driver: false
         variable_effect: restructures
       - name: collapse
+        include_driver: false
         variable_effect: restructures
         abbreviations: [coll, colla, collap, collaps]
       - name: merge
+        include_driver: false
         variable_effect: restructures
         abbreviations: [mer, merg]
       - name: append
+        include_driver: false
         variable_effect: restructures
       - name: joinby
+        include_driver: false
         variable_effect: restructures
       - name: display
+        include_driver: false
         variable_effect: none
         abbreviations: [di]
       - name: summarize
+        include_driver: false
         variable_effect: none
         abbreviations: [su, sum, summ, summa, summar, summari, summariz]
       - name: describe
+        include_driver: false
         variable_effect: none
         abbreviations: [d, de, des, desc, descr, descri, describ]
       - name: list
+        include_driver: false
         variable_effect: none
         abbreviations: [l, li]
       - name: codebook
+        include_driver: false
         variable_effect: none
       - name: inspect
+        include_driver: false
         variable_effect: none
       - name: lookfor
+        include_driver: false
         variable_effect: none
       - name: count
+        include_driver: false
         variable_effect: none
       - name: duplicates
+        include_driver: false
         variable_effect: none
       - name: isid
+        include_driver: false
         variable_effect: none
       - name: levelsof
+        include_driver: false
         variable_effect: none
       - name: browse
+        include_driver: false
         variable_effect: none
       - name: edit
+        include_driver: false
         variable_effect: none
       - name: memory
+        include_driver: false
         variable_effect: none
       - name: datasignature
+        include_driver: false
         variable_effect: none
       - name: tabulate
+        include_driver: false
         variable_effect: none
         abbreviations: [ta, tab, tabu, tabul, tabula, tabulat]
       - name: tab1
+        include_driver: false
         variable_effect: none
       - name: tab2
+        include_driver: false
         variable_effect: none
       - name: tabi
+        include_driver: false
         variable_effect: none
       - name: table
+        include_driver: false
         variable_effect: none
       - name: tabstat
+        include_driver: false
         variable_effect: none
       - name: label
+        include_driver: false
         variable_effect: labels
         abbreviations: [la, lab, labe]
       - name: notes
+        include_driver: false
         variable_effect: none
         abbreviations: [note]
       - name: format
+        include_driver: false
         variable_effect: modifies
         abbreviations: [form, forma]
       - name: char
+        include_driver: false
         variable_effect: none
       - name: strl
+        include_driver: false
         variable_effect: none
       - name: save
+        include_driver: false
         variable_effect: none
         abbreviations: [sa, sav]
       - name: saveold
+        include_driver: false
         variable_effect: none
       - name: use
+        include_driver: false
         variable_effect: none
         abbreviations: []
       - name: sysuse
+        include_driver: false
         variable_effect: none
       - name: webuse
+        include_driver: false
         variable_effect: none
       - name: import
+        include_driver: false
         variable_effect: creates
       - name: export
+        include_driver: false
         variable_effect: none
       - name: infile
+        include_driver: false
         variable_effect: none
       - name: infix
+        include_driver: false
         variable_effect: none
       - name: insheet
+        include_driver: false
         variable_effect: none
       - name: outfile
+        include_driver: false
         variable_effect: none
       - name: outsheet
+        include_driver: false
         variable_effect: none
       - name: input
+        include_driver: false
         variable_effect: none
       - name: zipfile
+        include_driver: false
         variable_effect: none
       - name: unzipfile
+        include_driver: false
         variable_effect: none
       - name: checksum
+        include_driver: false
         variable_effect: none
       - name: hexdump
+        include_driver: false
         variable_effect: none
       - name: set
+        include_driver: false
         variable_effect: none
       - name: clear
+        include_driver: false
         variable_effect: removes
       - name: cls
+        include_driver: false
         variable_effect: none
       - name: cd
+        include_driver: false
         variable_effect: none
       - name: pwd
+        include_driver: false
         variable_effect: none
       - name: log
+        include_driver: false
         variable_effect: none
       - name: more
+        include_driver: false
         variable_effect: none
       - name: pause
+        include_driver: false
         variable_effect: none
       - name: sleep
+        include_driver: false
         variable_effect: none
       - name: mkdir
+        include_driver: false
         variable_effect: none
       - name: rmdir
+        include_driver: false
         variable_effect: none
       - name: copy
+        include_driver: false
         variable_effect: none
       - name: erase
+        include_driver: false
         variable_effect: none
       - name: type
+        include_driver: false
         variable_effect: none
       - name: dir
+        include_driver: false
         variable_effect: none
       - name: sample
+        include_driver: false
         variable_effect: none
       - name: snapshot
+        include_driver: false
         variable_effect: none
       - name: fvset
+        include_driver: false
         variable_effect: none
       - name: xtset
+        include_driver: false
         variable_effect: none
       - name: tsset
+        include_driver: false
         variable_effect: none
       - name: stset
+        include_driver: false
         variable_effect: none
       - name: svyset
+        include_driver: false
         variable_effect: none
       - name: help
+        include_driver: false
         variable_effect: none
       - name: search
+        include_driver: false
         variable_effect: none
       - name: net
+        include_driver: false
         variable_effect: none
       - name: ssc
+        include_driver: false
         variable_effect: none
       - name: update
+        include_driver: false
         variable_effect: none
       - name: adoupdate
+        include_driver: false
         variable_effect: none
       - name: news
+        include_driver: false
         variable_effect: none
       - name: do
+        include_driver: true
+        variable_effect: none
+      - name: include
+        include_driver: true
         variable_effect: none
       - name: run
+        include_driver: true
         variable_effect: none
       - name: doedit
+        include_driver: false
         variable_effect: none
       - name: translate
+        include_driver: false
         variable_effect: none
       - name: view
+        include_driver: false
         variable_effect: none
       - name: viewsource
+        include_driver: false
         variable_effect: none
       - name: predict
+        include_driver: false
         variable_effect: creates
       - name: test
+        include_driver: false
         variable_effect: none
       - name: testnl
+        include_driver: false
         variable_effect: none
       - name: lincom
+        include_driver: false
         variable_effect: none
       - name: nlcom
+        include_driver: false
         variable_effect: none
       - name: margins
+        include_driver: false
         variable_effect: creates
       - name: marginsplot
+        include_driver: false
         variable_effect: none
       - name: makecns
+        include_driver: false
         variable_effect: none
       - name: constraint
+        include_driver: false
         variable_effect: none
       - name: hausman
+        include_driver: false
         variable_effect: none
       - name: suest
+        include_driver: false
         variable_effect: none
       - name: lrtest
+        include_driver: false
         variable_effect: none
       - name: waldtest
+        include_driver: false
         variable_effect: none
       - name: mfx
+        include_driver: false
         variable_effect: none
       - name: dydx
+        include_driver: false
         variable_effect: none
       - name: misstable
+        include_driver: false
         variable_effect: none
       - name: ssd
+        include_driver: false
         variable_effect: none
       - name: graph
+        include_driver: false
         variable_effect: none
         abbreviations: [gr]
       - name: twoway
+        include_driver: false
         variable_effect: none
       - name: histogram
+        include_driver: false
         variable_effect: none
       - name: scatter
+        include_driver: false
         variable_effect: none
       - name: line
+        include_driver: false
         variable_effect: none
       - name: kdensity
+        include_driver: false
         variable_effect: none
       - name: lowess
+        include_driver: false
         variable_effect: none
       - name: lpoly
+        include_driver: false
         variable_effect: none
       - name: sunflower
+        include_driver: false
         variable_effect: none
       - name: serrbar
+        include_driver: false
         variable_effect: none
       - name: symplot
+        include_driver: false
         variable_effect: none
       - name: pnorm
+        include_driver: false
         variable_effect: none
       - name: qnorm
+        include_driver: false
         variable_effect: none
       - name: qqplot
+        include_driver: false
         variable_effect: none
       - name: dotplot
+        include_driver: false
         variable_effect: none
       - name: spikeplot
+        include_driver: false
         variable_effect: none
       - name: cchart
+        include_driver: false
         variable_effect: none
       - name: pchart
+        include_driver: false
         variable_effect: none
       - name: rchart
+        include_driver: false
         variable_effect: none
       - name: xchart
+        include_driver: false
         variable_effect: none
       - name: shewhart
+        include_driver: false
         variable_effect: none
       - name: npgraph
+        include_driver: false
         variable_effect: none
       - name: grmap
+        include_driver: false
         variable_effect: none
       - name: categraph
+        include_driver: false
         variable_effect: none
   statistics:
     description: "Statistics and estimation commands"
     scope: keyword.functions.data.stata
     commands:
       - name: correlate
+        include_driver: false
         variable_effect: none
         abbreviations: [corr, corre, correl, correla, correlat]
       - name: pwcorr
+        include_driver: false
         variable_effect: none
       - name: spearman
+        include_driver: false
         variable_effect: none
       - name: ktau
+        include_driver: false
         variable_effect: none
       - name: ttest
+        include_driver: false
         variable_effect: none
       - name: ttesti
+        include_driver: false
         variable_effect: none
       - name: sdtest
+        include_driver: false
         variable_effect: none
       - name: sdtesti
+        include_driver: false
         variable_effect: none
       - name: signrank
+        include_driver: false
         variable_effect: none
       - name: signtest
+        include_driver: false
         variable_effect: none
       - name: ranksum
+        include_driver: false
         variable_effect: none
       - name: median
+        include_driver: false
         variable_effect: none
       - name: ksmirnov
+        include_driver: false
         variable_effect: none
       - name: kwallis
+        include_driver: false
         variable_effect: none
       - name: runtest
+        include_driver: false
         variable_effect: none
       - name: swilk
+        include_driver: false
         variable_effect: none
       - name: sfrancia
+        include_driver: false
         variable_effect: none
       - name: sktest
+        include_driver: false
         variable_effect: none
       - name: ladder
+        include_driver: false
         variable_effect: none
       - name: gladder
+        include_driver: false
         variable_effect: none
       - name: qladder
+        include_driver: false
         variable_effect: none
       - name: stem
+        include_driver: false
         variable_effect: none
       - name: lv
+        include_driver: false
         variable_effect: none
       - name: ci
+        include_driver: false
         variable_effect: none
       - name: centile
+        include_driver: false
         variable_effect: none
       - name: pctile
+        include_driver: false
         variable_effect: none
       - name: xtile
+        include_driver: false
         variable_effect: none
       - name: total
+        include_driver: false
         variable_effect: none
       - name: mean
+        include_driver: false
         variable_effect: none
       - name: ratio
+        include_driver: false
         variable_effect: none
       - name: proportion
+        include_driver: false
         variable_effect: none
       - name: hotelling
+        include_driver: false
         variable_effect: none
       - name: anova
+        include_driver: false
         variable_effect: none
       - name: manova
+        include_driver: false
         variable_effect: none
       - name: oneway
+        include_driver: false
         variable_effect: none
       - name: loneway
+        include_driver: false
         variable_effect: none
       - name: regress
+        include_driver: false
         variable_effect: none
         abbreviations: [reg, regr, regre, regres]
       - name: logit
+        include_driver: false
         variable_effect: none
       - name: logistic
+        include_driver: false
         variable_effect: none
       - name: probit
+        include_driver: false
         variable_effect: none
       - name: clogit
+        include_driver: false
         variable_effect: none
       - name: cloglog
+        include_driver: false
         variable_effect: none
       - name: mlogit
+        include_driver: false
         variable_effect: none
       - name: mprobit
+        include_driver: false
         variable_effect: none
       - name: ologit
+        include_driver: false
         variable_effect: none
       - name: oprobit
+        include_driver: false
         variable_effect: none
       - name: slogit
+        include_driver: false
         variable_effect: none
       - name: rologit
+        include_driver: false
         variable_effect: none
       - name: glm
+        include_driver: false
         variable_effect: none
       - name: binreg
+        include_driver: false
         variable_effect: none
       - name: poisson
+        include_driver: false
         variable_effect: none
       - name: nbreg
+        include_driver: false
         variable_effect: none
       - name: gnbreg
+        include_driver: false
         variable_effect: none
       - name: zip
+        include_driver: false
         variable_effect: none
       - name: zinb
+        include_driver: false
         variable_effect: none
       - name: intreg
+        include_driver: false
         variable_effect: none
       - name: tobit
+        include_driver: false
         variable_effect: none
       - name: cnreg
+        include_driver: false
         variable_effect: none
       - name: truncreg
+        include_driver: false
         variable_effect: none
       - name: heckman
+        include_driver: false
         variable_effect: none
       - name: heckprobit
+        include_driver: false
         variable_effect: none
       - name: treatreg
+        include_driver: false
         variable_effect: none
       - name: ivregress
+        include_driver: false
         variable_effect: none
       - name: ivreg
+        include_driver: false
         variable_effect: none
       - name: nl
+        include_driver: false
         variable_effect: none
       - name: nlsur
+        include_driver: false
         variable_effect: none
       - name: qreg
+        include_driver: false
         variable_effect: none
       - name: iqreg
+        include_driver: false
         variable_effect: none
       - name: sqreg
+        include_driver: false
         variable_effect: none
       - name: bsqreg
+        include_driver: false
         variable_effect: none
       - name: rreg
+        include_driver: false
         variable_effect: none
       - name: vwls
+        include_driver: false
         variable_effect: none
       - name: sureg
+        include_driver: false
         variable_effect: none
       - name: mvreg
+        include_driver: false
         variable_effect: none
       - name: reg3
+        include_driver: false
         variable_effect: none
       - name: biprobit
+        include_driver: false
         variable_effect: none
       - name: tetrachoric
+        include_driver: false
         variable_effect: none
       - name: asmprobit
+        include_driver: false
         variable_effect: none
       - name: asroprobit
+        include_driver: false
         variable_effect: none
       - name: asclogit
+        include_driver: false
         variable_effect: none
       - name: nlogit
+        include_driver: false
         variable_effect: none
       - name: boxcox
+        include_driver: false
         variable_effect: none
       - name: frontier
+        include_driver: false
         variable_effect: none
       - name: scobit
+        include_driver: false
         variable_effect: none
       - name: ml
+        include_driver: false
         variable_effect: none
       - name: maximize
+        include_driver: false
         variable_effect: none
       - name: tabodds
+        include_driver: false
         variable_effect: none
       - name: epitab
+        include_driver: false
         variable_effect: none
       - name: cc
+        include_driver: false
         variable_effect: none
       - name: cci
+        include_driver: false
         variable_effect: none
       - name: cs
+        include_driver: false
         variable_effect: none
       - name: csi
+        include_driver: false
         variable_effect: none
       - name: ir
+        include_driver: false
         variable_effect: none
       - name: iri
+        include_driver: false
         variable_effect: none
       - name: mcc
+        include_driver: false
         variable_effect: none
       - name: mcci
+        include_driver: false
         variable_effect: none
   panel_timeseries:
     description: "Panel data and time-series commands"
     scope: keyword.functions.data.stata
     commands:
       - name: xtreg
+        include_driver: false
         variable_effect: none
       - name: xtlogit
+        include_driver: false
         variable_effect: none
       - name: xtprobit
+        include_driver: false
         variable_effect: none
       - name: xtpoisson
+        include_driver: false
         variable_effect: none
       - name: xtnbreg
+        include_driver: false
         variable_effect: none
       - name: xtgee
+        include_driver: false
         variable_effect: none
       - name: xtmixed
+        include_driver: false
         variable_effect: none
       - name: xtivreg
+        include_driver: false
         variable_effect: none
       - name: xtcloglog
+        include_driver: false
         variable_effect: none
       - name: xtfrontier
+        include_driver: false
         variable_effect: none
       - name: xthtaylor
+        include_driver: false
         variable_effect: none
       - name: xtintreg
+        include_driver: false
         variable_effect: none
       - name: xtrc
+        include_driver: false
         variable_effect: none
       - name: xttobit
+        include_driver: false
         variable_effect: none
       - name: xtpcse
+        include_driver: false
         variable_effect: none
       - name: xtgls
+        include_driver: false
         variable_effect: none
       - name: xtabond
+        include_driver: false
         variable_effect: none
       - name: xtregar
+        include_driver: false
         variable_effect: none
       - name: xtdata
+        include_driver: false
         variable_effect: none
       - name: xtdescribe
+        include_driver: false
         variable_effect: none
         abbreviations: [xtdes, xtdesc, xtdescr, xtdescri, xtdescrib]
       - name: xtsum
+        include_driver: false
         variable_effect: none
       - name: xttab
+        include_driver: false
         variable_effect: none
       - name: xttrans
+        include_driver: false
         variable_effect: none
       - name: xtunitroot
+        include_driver: false
         variable_effect: none
       - name: xtcointtest
+        include_driver: false
         variable_effect: none
       - name: xtline
+        include_driver: false
         variable_effect: none
       - name: xttest0
+        include_driver: false
         variable_effect: none
       - name: tsline
+        include_driver: false
         variable_effect: none
       - name: tssmooth
+        include_driver: false
         variable_effect: none
       - name: arch
+        include_driver: false
         variable_effect: none
       - name: arima
+        include_driver: false
         variable_effect: none
       - name: arfima
+        include_driver: false
         variable_effect: none
       - name: var
+        include_driver: false
         variable_effect: none
       - name: vec
+        include_driver: false
         variable_effect: none
       - name: irf
+        include_driver: false
         variable_effect: none
       - name: fcast
+        include_driver: false
         variable_effect: none
       - name: varsoc
+        include_driver: false
         variable_effect: none
       - name: varlmar
+        include_driver: false
         variable_effect: none
       - name: varstable
+        include_driver: false
         variable_effect: none
       - name: varnorm
+        include_driver: false
         variable_effect: none
       - name: vargranger
+        include_driver: false
         variable_effect: none
       - name: varbasic
+        include_driver: false
         variable_effect: none
       - name: vecrank
+        include_driver: false
         variable_effect: none
       - name: newey
+        include_driver: false
         variable_effect: none
       - name: prais
+        include_driver: false
         variable_effect: none
       - name: cochrane
+        include_driver: false
         variable_effect: none
       - name: tsfilter
+        include_driver: false
         variable_effect: none
       - name: pergram
+        include_driver: false
         variable_effect: none
       - name: corrgram
+        include_driver: false
         variable_effect: none
       - name: xcorr
+        include_driver: false
         variable_effect: none
       - name: pperron
+        include_driver: false
         variable_effect: none
       - name: dfuller
+        include_driver: false
         variable_effect: none
       - name: dfgls
+        include_driver: false
         variable_effect: none
       - name: wntestb
+        include_driver: false
         variable_effect: none
       - name: wntestq
+        include_driver: false
         variable_effect: none
       - name: cusum
+        include_driver: false
         variable_effect: none
       - name: tsreport
+        include_driver: false
         variable_effect: none
       - name: tsappend
+        include_driver: false
         variable_effect: none
       - name: tsfill
+        include_driver: false
         variable_effect: none
   survival:
     description: "Survival analysis commands"
     scope: keyword.functions.data.stata
     commands:
       - name: streg
+        include_driver: false
         variable_effect: none
       - name: stcox
+        include_driver: false
         variable_effect: none
       - name: sts
+        include_driver: false
         variable_effect: none
       - name: stsum
+        include_driver: false
         variable_effect: none
       - name: stdes
+        include_driver: false
         variable_effect: none
       - name: stgen
+        include_driver: false
         variable_effect: none
       - name: stvary
+        include_driver: false
         variable_effect: none
       - name: stptime
+        include_driver: false
         variable_effect: none
       - name: ltable
+        include_driver: false
         variable_effect: none
       - name: stbase
+        include_driver: false
         variable_effect: none
       - name: stci
+        include_driver: false
         variable_effect: none
       - name: stcurve
+        include_driver: false
         variable_effect: none
       - name: stir
+        include_driver: false
         variable_effect: none
       - name: stmh
+        include_driver: false
         variable_effect: none
       - name: stphplot
+        include_driver: false
         variable_effect: none
       - name: stphtest
+        include_driver: false
         variable_effect: none
       - name: stpower
+        include_driver: false
         variable_effect: none
         abbreviations: [stpow, stpowe]
       - name: strate
+        include_driver: false
         variable_effect: none
       - name: stsplit
+        include_driver: false
         variable_effect: none
       - name: stjoin
+        include_driver: false
         variable_effect: none
       - name: sttocc
+        include_driver: false
         variable_effect: none
       - name: sttoct
+        include_driver: false
         variable_effect: none
       - name: snapspan
+        include_driver: false
         variable_effect: none
       - name: ct
+        include_driver: false
         variable_effect: none
       - name: ctset
+        include_driver: false
         variable_effect: none
       - name: cttost
+        include_driver: false
         variable_effect: none
   estimation_advanced:
     description: "Advanced estimation and inference commands (Stata 14+)"
     scope: keyword.command.official.stata
     commands:
       - name: assertnested
+        include_driver: false
         variable_effect: none
       - name: bayes
+        include_driver: false
         variable_effect: none
       - name: bayesfcast
+        include_driver: false
         variable_effect: none
       - name: bayesgraph
+        include_driver: false
         variable_effect: none
       - name: bayesirf
+        include_driver: false
         variable_effect: none
       - name: bayesmh
+        include_driver: false
         variable_effect: none
       - name: bayesselect
+        include_driver: false
         variable_effect: none
       - name: bayesvarstable
+        include_driver: false
         variable_effect: none
       - name: bcal
+        include_driver: false
         variable_effect: none
       - name: betareg
+        include_driver: false
         variable_effect: none
       - name: bicplot
+        include_driver: false
         variable_effect: none
       - name: bmaregress
+        include_driver: false
         variable_effect: none
       - name: candisc
+        include_driver: false
         variable_effect: none
       - name: cate
+        include_driver: false
         variable_effect: none
       - name: cfprobit
+        include_driver: false
         variable_effect: none
       - name: cfregress
+        include_driver: false
         variable_effect: none
       - name: changeeol
+        include_driver: false
         variable_effect: none
       - name: churdle
+        include_driver: false
         variable_effect: none
       - name: ciwidth
+        include_driver: false
         variable_effect: none
       - name: cmclogit
+        include_driver: false
         variable_effect: none
       - name: cmmixlogit
+        include_driver: false
         variable_effect: none
       - name: cmmprobit
+        include_driver: false
         variable_effect: none
       - name: cmrologit
+        include_driver: false
         variable_effect: none
       - name: cmroprobit
+        include_driver: false
         variable_effect: none
       - name: cmxtmixlogit
+        include_driver: false
         variable_effect: none
       - name: coefpath
+        include_driver: false
         variable_effect: none
       - name: collect
+        include_driver: false
         variable_effect: none
       - name: concordance
+        include_driver: false
         variable_effect: none
       - name: contrast
+        include_driver: false
         variable_effect: none
       - name: cpoisson
+        include_driver: false
         variable_effect: none
       - name: cvplot
+        include_driver: false
         variable_effect: none
       - name: demandsys
+        include_driver: false
         variable_effect: none
       - name: dfactor
+        include_driver: false
         variable_effect: none
       - name: didregress
+        include_driver: false
         variable_effect: none
       - name: discrim
+        include_driver: false
         variable_effect: none
       - name: dsge
+        include_driver: false
         variable_effect: none
       - name: dsgenl
+        include_driver: false
         variable_effect: none
       - name: dslogit
+        include_driver: false
         variable_effect: none
       - name: dspoisson
+        include_driver: false
         variable_effect: none
       - name: dsregress
+        include_driver: false
         variable_effect: none
       - name: dtable
+        include_driver: false
         variable_effect: none
       - name: dyngen
+        include_driver: false
         variable_effect: none
       - name: eintreg
+        include_driver: false
         variable_effect: none
       - name: elasticnet
+        include_driver: false
         variable_effect: none
       - name: eoprobit
+        include_driver: false
         variable_effect: none
       - name: eprobit
+        include_driver: false
         variable_effect: none
       - name: eregress
+        include_driver: false
         variable_effect: none
       - name: etable
+        include_driver: false
         variable_effect: none
       - name: eteffects
+        include_driver: false
         variable_effect: none
       - name: etpoisson
+        include_driver: false
         variable_effect: none
       - name: etregress
+        include_driver: false
         variable_effect: none
       - name: exlogistic
+        include_driver: false
         variable_effect: none
       - name: expoisson
+        include_driver: false
         variable_effect: none
       - name: fmm
+        include_driver: false
         variable_effect: none
       - name: fracreg
+        include_driver: false
         variable_effect: none
       - name: frame
+        include_driver: false
         variable_effect: none
       - name: frames
+        include_driver: false
         variable_effect: none
       - name: frget
+        include_driver: false
         variable_effect: none
       - name: frlink
+        include_driver: false
         variable_effect: none
       - name: gencohort
+        include_driver: false
         variable_effect: none
       - name: gmm
+        include_driver: false
         variable_effect: none
       - name: gsbounds
+        include_driver: false
         variable_effect: none
       - name: gsdesign
+        include_driver: false
         variable_effect: none
       - name: gsem
+        include_driver: false
         variable_effect: none
       - name: h2oml
+        include_driver: false
         variable_effect: none
       - name: h2omlgraph
+        include_driver: false
         variable_effect: none
       - name: h2omltree
+        include_driver: false
         variable_effect: none
       - name: hdidregress
+        include_driver: false
         variable_effect: none
       - name: heckoprobit
+        include_driver: false
         variable_effect: none
       - name: heckpoisson
+        include_driver: false
         variable_effect: none
       - name: hetoprobit
+        include_driver: false
         variable_effect: none
       - name: hetprobit
+        include_driver: false
         variable_effect: none
       - name: hetregress
+        include_driver: false
         variable_effect: none
       - name: icd10
+        include_driver: false
         variable_effect: none
       - name: icd10cm
+        include_driver: false
         variable_effect: none
       - name: icd10pcs
+        include_driver: false
         variable_effect: none
       - name: insobs
+        include_driver: false
         variable_effect: none
       - name: irt
+        include_driver: false
         variable_effect: none
       - name: irtgraph
+        include_driver: false
         variable_effect: none
       - name: ivfprobit
+        include_driver: false
         variable_effect: none
       - name: ivlpirf
+        include_driver: false
         variable_effect: none
       - name: ivpoisson
+        include_driver: false
         variable_effect: none
       - name: ivqregress
+        include_driver: false
         variable_effect: none
       - name: jdbc
+        include_driver: false
         variable_effect: none
       - name: lasso
+        include_driver: false
         variable_effect: none
       - name: latebalance
+        include_driver: false
         variable_effect: none
       - name: lateffects
+        include_driver: false
         variable_effect: none
       - name: lateoverlap
+        include_driver: false
         variable_effect: none
       - name: lpirf
+        include_driver: false
         variable_effect: none
       - name: mca
+        include_driver: false
         variable_effect: none
       - name: mecloglog
+        include_driver: false
         variable_effect: none
       - name: mediate
+        include_driver: false
         variable_effect: none
       - name: meglm
+        include_driver: false
         variable_effect: none
       - name: meintreg
+        include_driver: false
         variable_effect: none
       - name: melogit
+        include_driver: false
         variable_effect: none
       - name: menbreg
+        include_driver: false
         variable_effect: none
       - name: menl
+        include_driver: false
         variable_effect: none
       - name: meologit
+        include_driver: false
         variable_effect: none
       - name: meoprobit
+        include_driver: false
         variable_effect: none
       - name: mepoisson
+        include_driver: false
         variable_effect: none
       - name: meprobit
+        include_driver: false
         variable_effect: none
       - name: mestreg
+        include_driver: false
         variable_effect: none
       - name: meta
+        include_driver: false
         variable_effect: none
       - name: metobit
+        include_driver: false
         variable_effect: none
       - name: mi
+        include_driver: false
         variable_effect: none
       - name: mixed
+        include_driver: false
         variable_effect: none
       - name: mlexp
+        include_driver: false
         variable_effect: none
       - name: mswitch
+        include_driver: false
         variable_effect: none
       - name: mvtest
+        include_driver: false
         variable_effect: none
       - name: npregress
+        include_driver: false
         variable_effect: none
       - name: poivregress
+        include_driver: false
         variable_effect: none
       - name: pologit
+        include_driver: false
         variable_effect: none
       - name: popoisson
+        include_driver: false
         variable_effect: none
       - name: poregress
+        include_driver: false
         variable_effect: none
       - name: power
+        include_driver: false
         variable_effect: none
       - name: psdensity
+        include_driver: false
         variable_effect: none
       - name: putexcel
+        include_driver: false
         variable_effect: none
       - name: putmata
+        include_driver: false
         variable_effect: none
       - name: pwcompare
+        include_driver: false
         variable_effect: none
       - name: pwmean
+        include_driver: false
         variable_effect: none
       - name: reri
+        include_driver: false
         variable_effect: none
       - name: rocreg
+        include_driver: false
         variable_effect: none
       - name: sem
+        include_driver: false
         variable_effect: none
       - name: spivregress
+        include_driver: false
         variable_effect: none
       - name: splitsample
+        include_driver: false
         variable_effect: none
       - name: spregress
+        include_driver: false
         variable_effect: none
       - name: spxtregress
+        include_driver: false
         variable_effect: none
       - name: sqrtlasso
+        include_driver: false
         variable_effect: none
       - name: sspace
+        include_driver: false
         variable_effect: none
       - name: stcrreg
+        include_driver: false
         variable_effect: none
       - name: stintcox
+        include_driver: false
         variable_effect: none
       - name: stintreg
+        include_driver: false
         variable_effect: none
       - name: stmgintcox
+        include_driver: false
         variable_effect: none
       - name: stteffects
+        include_driver: false
         variable_effect: none
       - name: tebalance
+        include_driver: false
         variable_effect: none
       - name: teffects
+        include_driver: false
         variable_effect: none
       - name: telasso
+        include_driver: false
         variable_effect: none
       - name: teoverlap
+        include_driver: false
         variable_effect: none
       - name: threshold
+        include_driver: false
         variable_effect: none
       - name: tnbreg
+        include_driver: false
         variable_effect: none
       - name: tpoisson
+        include_driver: false
         variable_effect: none
       - name: ucm
+        include_driver: false
         variable_effect: none
       - name: unicode
+        include_driver: false
         variable_effect: none
       - name: varmanage
+        include_driver: false
         variable_effect: none
       - name: vl
+        include_driver: false
         variable_effect: none
       - name: wildbootstrap
+        include_driver: false
         variable_effect: none
       - name: xpoivregress
+        include_driver: false
         variable_effect: none
       - name: xpologit
+        include_driver: false
         variable_effect: none
       - name: xpopoisson
+        include_driver: false
         variable_effect: none
       - name: xporegress
+        include_driver: false
         variable_effect: none
       - name: xtdidregress
+        include_driver: false
         variable_effect: none
       - name: xtdpd
+        include_driver: false
         variable_effect: none
       - name: xtdpdsys
+        include_driver: false
         variable_effect: none
       - name: xteintreg
+        include_driver: false
         variable_effect: none
       - name: xteoprobit
+        include_driver: false
         variable_effect: none
       - name: xteprobit
+        include_driver: false
         variable_effect: none
       - name: xteregress
+        include_driver: false
         variable_effect: none
       - name: xthdidregress
+        include_driver: false
         variable_effect: none
       - name: xtheckman
+        include_driver: false
         variable_effect: none
       - name: xtmlogit
+        include_driver: false
         variable_effect: none
       - name: xtologit
+        include_driver: false
         variable_effect: none
       - name: xtoprobit
+        include_driver: false
         variable_effect: none
       - name: xtstreg
+        include_driver: false
         variable_effect: none
       - name: xtvar
+        include_driver: false
         variable_effect: none
       - name: ziologit
+        include_driver: false
         variable_effect: none
       - name: zioprobit
+        include_driver: false
         variable_effect: none

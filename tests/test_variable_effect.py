@@ -37,6 +37,21 @@ class TestVariableEffectPresence:
         assert "creates" in cmd_schema["variable_effect"]["enum"]
         assert "none" in cmd_schema["variable_effect"]["enum"]
 
+    def test_include_driver_in_schema_is_boolean(self):
+        """include_driver accepts explicit booleans and rejects other types."""
+        from jsonschema import validate, ValidationError
+
+        schema = json.loads((_COMMANDS_DIR / "schema.json").read_text())
+        cmd_schema = (
+            schema["properties"]["categories"]["additionalProperties"]
+            ["properties"]["commands"]["items"]
+        )
+        validate(instance={"name": "do", "include_driver": True}, schema=cmd_schema)
+        validate(instance={"name": "regress", "include_driver": False}, schema=cmd_schema)
+        validate(instance={"name": "legacy"}, schema=cmd_schema)
+        with pytest.raises(ValidationError):
+            validate(instance={"name": "do", "include_driver": "true"}, schema=cmd_schema)
+
     def test_variable_effect_documented_defaults(self):
         """README documents the resolved scalar primary-effect policy."""
         readme = (_REPO_ROOT / "README.md").read_text()

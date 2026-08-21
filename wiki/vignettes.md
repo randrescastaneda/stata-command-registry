@@ -43,6 +43,28 @@ print(classify("regress"))   # statistics
 print(classify("foobar"))    # unknown
 ```
 
+### Detect source execution
+
+Use `is_include()` for commands that execute another Stata source file rather
+than inferring from `variable_effect` or maintaining a consumer-side list:
+
+```python
+import stata_registry as sr
+
+for tok in ["do", "run", "include", "regress", "unknown"]:
+    print(tok, sr.is_include(tok))
+# do       True
+# run      True
+# include  True
+# regress  False
+# unknown  False
+```
+
+The classifications for `do`, `run`, and `include` are backed by the official
+StataNow 19 help pages linked in the registry's source-driver evidence fixture.
+The package is metadata-only: it does not require Stata, execute Stata, or
+parse Stata source.
+
 ### Validate a YAML registry against the schema
 
 Before submitting a contribution, validate your edited YAML against the JSON
@@ -99,9 +121,9 @@ the canonical vocabulary: `is_command` drives keyword matching, while
 ### do2screen-py — do-file tracing
 
 `do2screen-py` traces Stata do-file execution. It uses `canonical_command` to
-normalise abbreviated tokens before logging, and `is_control_flow` /
-`is_prefix` to understand the structural role of each token in the do-file
-without re-implementing a Stata parser.
+normalise abbreviated tokens before logging, `is_include` to identify source
+drivers, and `is_control_flow` / `is_prefix` to understand the structural role
+of each token without re-implementing a Stata parser.
 
 ### Generic Stata tooling
 

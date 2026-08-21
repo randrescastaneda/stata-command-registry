@@ -12,202 +12,302 @@ categories:
     scope: keyword.command.community.stata
     commands:
       - name: estout
+        include_driver: false
         variable_effect: none
       - name: winsor2
+        include_driver: false
         variable_effect: none
       - name: reghdfe
+        include_driver: false
         variable_effect: none
       - name: outreg2
+        include_driver: false
         variable_effect: none
       - name: ftools
+        include_driver: false
         variable_effect: none
       - name: egenmore
+        include_driver: false
         variable_effect: none
       - name: asdoc
+        include_driver: false
         variable_effect: none
       - name: coefplot
+        include_driver: false
         variable_effect: none
       - name: tscollap
+        include_driver: false
         variable_effect: none
       - name: tableplot
+        include_driver: false
         variable_effect: none
       - name: ivreg210
+        include_driver: false
         variable_effect: none
       - name: ivreg2
+        include_driver: false
         variable_effect: none
       - name: ivreg29
+        include_driver: false
         variable_effect: none
       - name: ivreg28
+        include_driver: false
         variable_effect: none
       - name: psmatch2
+        include_driver: false
         variable_effect: none
       - name: require
+        include_driver: false
         variable_effect: none
       - name: sum2docx
+        include_driver: false
         variable_effect: none
       - name: fre
+        include_driver: false
         variable_effect: none
       - name: ranktest
+        include_driver: false
         variable_effect: none
       - name: ivreghdfe
+        include_driver: false
         variable_effect: none
       - name: logout
+        include_driver: false
         variable_effect: none
       - name: reg2docx
+        include_driver: false
         variable_effect: none
       - name: mimrgns
+        include_driver: false
         variable_effect: none
       - name: rangestat
+        include_driver: false
         variable_effect: none
       - name: distinct
+        include_driver: false
         variable_effect: none
       - name: xtabond2
+        include_driver: false
         variable_effect: none
       - name: mdesc
+        include_driver: false
         variable_effect: none
       - name: unique
+        include_driver: false
         variable_effect: none
       - name: csdid
+        include_driver: false
         variable_effect: none
       - name: xtivreg2
+        include_driver: false
         variable_effect: none
       - name: fs
+        include_driver: false
         variable_effect: none
       - name: palettes
+        include_driver: false
         variable_effect: none
       - name: kpss
+        include_driver: false
         variable_effect: none
       - name: bcuse
+        include_driver: false
         variable_effect: none
       - name: ereplace
+        include_driver: false
         variable_effect: none
       - name: inlist2
+        include_driver: false
         variable_effect: none
       - name: gtools
+        include_driver: false
         variable_effect: none
       - name: egranger
+        include_driver: false
         variable_effect: none
       - name: winsor
+        include_driver: false
         variable_effect: none
       - name: drdid
+        include_driver: false
         variable_effect: none
       - name: did_multiplegt_dyn
+        include_driver: false
         variable_effect: none
       - name: keeporder
+        include_driver: false
         variable_effect: none
       - name: center
+        include_driver: false
         variable_effect: none
       - name: jarowinkler
+        include_driver: false
         variable_effect: none
       - name: corr2docx
+        include_driver: false
         variable_effect: none
       - name: ppmlhdfe
+        include_driver: false
         variable_effect: none
       - name: xttest3
+        include_driver: false
         variable_effect: none
       - name: binscatter
+        include_driver: false
         variable_effect: none
       - name: spmap
+        include_driver: false
         variable_effect: none
       - name: carryforward
+        include_driver: false
         variable_effect: none
       - name: oneclick
+        include_driver: false
         variable_effect: none
       - name: synth
+        include_driver: false
         variable_effect: none
       - name: missings
+        include_driver: false
         variable_effect: none
       - name: metan
+        include_driver: false
         variable_effect: none
       - name: parmest
+        include_driver: false
         variable_effect: none
       - name: shp2dta
+        include_driver: false
         variable_effect: none
       - name: geodist
+        include_driver: false
         variable_effect: none
       - name: xtivreg28
+        include_driver: false
         variable_effect: none
       - name: filelist
+        include_driver: false
         variable_effect: none
       - name: heatplot
+        include_driver: false
         variable_effect: none
       - name: bdiff
+        include_driver: false
         variable_effect: none
       - name: labone
+        include_driver: false
         variable_effect: none
       - name: xtscc
+        include_driver: false
         variable_effect: none
       - name: rdrobust
+        include_driver: false
         variable_effect: none
       - name: grstyle
+        include_driver: false
         variable_effect: none
       - name: tabout
+        include_driver: false
         variable_effect: none
       - name: gsample
+        include_driver: false
         variable_effect: none
       - name: boottest
+        include_driver: false
         variable_effect: none
       - name: event_plot
+        include_driver: false
         variable_effect: none
       - name: factortest
+        include_driver: false
         variable_effect: none
       - name: eventstudyinteract
+        include_driver: false
         variable_effect: none
       - name: xtcsd
+        include_driver: false
         variable_effect: none
       - name: xsmle
+        include_driver: false
         variable_effect: none
       - name: ebalance
+        include_driver: false
         variable_effect: none
       - name: lassopack
+        include_driver: false
         variable_effect: none
       - name: labutil
+        include_driver: false
         variable_effect: none
       - name: xtoverid
+        include_driver: false
         variable_effect: none
       - name: ardl
+        include_driver: false
         variable_effect: none
       - name: avar
+        include_driver: false
         variable_effect: none
       - name: hhi
+        include_driver: false
         variable_effect: none
       - name: _gwtmean
+        include_driver: false
         variable_effect: none
       - name: rddensity
+        include_driver: false
         variable_effect: none
       - name: wbopendata
+        include_driver: false
         variable_effect: none
       - name: eventdd
+        include_driver: false
         variable_effect: none
       - name: ineqdeco
+        include_driver: false
         variable_effect: none
       - name: dpplot
+        include_driver: false
         variable_effect: none
       - name: xtbalance
+        include_driver: false
         variable_effect: none
       - name: sxpose
+        include_driver: false
         variable_effect: none
       - name: sencode
+        include_driver: false
         variable_effect: none
       - name: table1_mc
+        include_driver: false
         variable_effect: none
       - name: cnssc
+        include_driver: false
         variable_effect: none
       - name: matsort
+        include_driver: false
         variable_effect: none
       - name: asreg
+        include_driver: false
         variable_effect: none
       - name: sdid
+        include_driver: false
         variable_effect: none
       - name: metabias
+        include_driver: false
         variable_effect: none
       - name: sendtoslack
+        include_driver: false
         variable_effect: none
       - name: pystacked
+        include_driver: false
         variable_effect: none
       - name: mediation
+        include_driver: false
         variable_effect: none
       - name: utest
+        include_driver: false
         variable_effect: none
       - name: did_imputation
+        include_driver: false
         variable_effect: none

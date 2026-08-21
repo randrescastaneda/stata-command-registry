@@ -90,6 +90,10 @@
                     "none"
                   ],
                   "description": "Primary effect on variables or dataset structure. Optional for legacy documents; shipped registry entries must provide an enum value."
+                },
+                "include_driver": {
+                  "type": "boolean",
+                  "description": "Whether the command executes commands stored in another Stata source file. Optional for legacy documents; shipped registry entries must provide a boolean value."
                 }
               },
               "required": ["name"]

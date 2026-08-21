@@ -193,6 +193,38 @@ class TestRequiredFields:
             meta = doc.get("metadata", {})
             assert "source" in meta, f"{yf.name} metadata missing 'source'"
 
+    def test_every_entry_has_include_driver_boolean(self):
+        """Every shipped source and bundled entry has an explicit boolean."""
+        roots = (_COMMANDS_DIR, _REPO_ROOT / "stata_registry" / "data")
+        for root in roots:
+            for path in sorted(root.glob("*.yaml")):
+                document = yaml.safe_load(path.read_text())
+                for category in document.get("categories", {}).values():
+                    for command in category.get("commands") or []:
+                        assert type(command.get("include_driver")) is bool, (
+                            f"{path.name}:{command['name']} lacks a boolean "
+                            "include_driver value"
+                        )
+
+
+class TestIncludeDriverData:
+    """Shipped classifications are derived from the upstream evidence fixture."""
+
+    def test_true_values_match_upstream_evidence(self):
+        evidence_path = _REPO_ROOT / "scripts" / "source_driver_evidence.yaml"
+        evidence = yaml.safe_load(evidence_path.read_text())
+        expected = {
+            entry["name"]
+            for entry in evidence.get("commands") or []
+            if entry["include_driver"] is True
+        }
+        actual = {
+            name
+            for name, command, _filename in _load_all_entries()
+            if command["include_driver"] is True
+        }
+        assert actual == expected
+
 
 # ---------------------------------------------------------------------------
 # 1.4 — Reserved words
@@ -225,7 +257,7 @@ class TestReservedWords:
 # ---------------------------------------------------------------------------
 
 class TestCoverageClaim:
-    """README claims 569 official and 100 SSC commands."""
+    """The registry ships 568 official and 100 SSC commands."""
 
     def test_official_count(self):
         doc = yaml.safe_load(
@@ -235,7 +267,7 @@ class TestCoverageClaim:
             len(cat.get("commands", []))
             for cat in doc["categories"].values()
         )
-        assert count == 567, f"Official commands: expected 567, got {count}"
+        assert count == 568, f"Official commands: expected 568, got {count}"
 
     def test_ssc_count(self):
         doc = yaml.safe_load(

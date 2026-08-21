@@ -64,6 +64,37 @@ class TestDocumentedAPIExamples:
     def test_is_prefix_regress(self):
         assert self.sr.is_prefix("regress") is False
 
+    def test_is_include_source_drivers(self):
+        assert self.sr.is_include("do") is True
+        assert self.sr.is_include("run") is True
+        assert self.sr.is_include("include") is True
+
+    def test_is_include_non_driver_and_unknown(self):
+        assert self.sr.is_include("regress") is False
+        assert self.sr.is_include("notacommand") is False
+
+    def test_is_include_non_string(self):
+        assert self.sr.is_include(None) is False
+
+    def test_is_include_matches_all_shipped_tokens(self):
+        import yaml
+
+        for path in sorted((_REPO_ROOT / "stata_registry" / "data").glob("*.yaml")):
+            document = yaml.safe_load(path.read_text())
+            for category in document.get("categories", {}).values():
+                for command in category.get("commands") or []:
+                    expected = command["include_driver"]
+                    tokens = [
+                        command["name"],
+                        *(command.get("abbreviations") or []),
+                        *(command.get("aliases") or []),
+                    ]
+                    for token in tokens:
+                        assert self.sr.is_include(token) is expected, (
+                            f"{path.name}:{token} does not match its canonical "
+                            f"include_driver value for {command['name']}"
+                        )
+
     def test_is_control_flow_foreach(self):
         assert self.sr.is_control_flow("foreach") is True
 
@@ -103,6 +134,72 @@ class TestIndexCollisionHandling:
         document = {"categories": {"test": {"commands": commands}}}
         with pytest.raises(ValueError, match="maps to both|Duplicate registry command name"):
             sr._build_index([document])
+
+
+class TestIncludeDriverSemantics:
+    """Source-driver identity is explicit and follows canonical resolution."""
+
+    def test_canonical_and_abbreviation_resolution_are_shared(self):
+        import stata_registry as sr
+
+        document = {
+            "categories": {
+                "test": {
+                    "commands": [
+                        {
+                            "name": "sourcecmd",
+                            "abbreviations": ["src"],
+                            "aliases": ["sourcealias"],
+                            "variable_effect": "none",
+                            "include_driver": True,
+                        }
+                    ]
+                }
+            }
+        }
+        index = sr._build_index([document])
+        original = sr._index
+        try:
+            sr._index = index
+            assert sr.is_include("sourcecmd") is True
+            assert sr.is_include("src") is True
+            assert sr.is_include("sourcealias") is True
+            assert sr.canonical_command("src") == "sourcecmd"
+            assert sr.canonical_command("sourcealias") == "sourcecmd"
+        finally:
+            sr._index = original
+
+    def test_include_driver_is_independent_from_variable_effect(self):
+        import stata_registry as sr
+
+        document = {
+            "categories": {
+                "test": {
+                    "commands": [
+                        {
+                            "name": "sourcecmd",
+                            "variable_effect": "creates",
+                            "include_driver": True,
+                        },
+                        {
+                            "name": "ordinarycmd",
+                            "variable_effect": "none",
+                            "include_driver": False,
+                        },
+                    ]
+                }
+            }
+        }
+        index = sr._build_index([document])
+        original = sr._index
+        try:
+            sr._index = index
+            assert sr.is_include("sourcecmd") is True
+            assert sr.is_include("ordinarycmd") is False
+            assert sr.variable_effect("sourcecmd") == "creates"
+            assert sr.variable_effect("ordinarycmd") == "none"
+        finally:
+            sr._index = original
 
 
 # ---------------------------------------------------------------------------

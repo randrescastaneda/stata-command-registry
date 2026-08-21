@@ -15,7 +15,7 @@ The repository ships two artifacts:
 - **`stata_registry/`** — a thin, installable Python reader package that
   bundles the YAML data and exposes a lookup API
    (`is_command`, `canonical_command`, `category`, `variable_effect`,
-   `is_prefix`, `is_control_flow`).
+   `is_prefix`, `is_control_flow`, `is_include`).
 
 **Constraints.** This project is data and lookup only: no parsing logic, no
 regular expressions, and no runtime dependencies beyond PyYAML. Abbreviations
@@ -41,7 +41,7 @@ pip install stata-registry
 ### Install from source (this repo)
 
 ```bash
-pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.3.0
+pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.4.0
 ```
 
 **Requirements:** Python >= 3.9. The only runtime dependency is
@@ -58,7 +58,11 @@ check-jsonschema --schemafile commands/schema.json commands/*.yaml
 python -m build
 ```
 
-Install the generated `0.3.0` wheel from outside the repository root and verify
+The source-to-package data pipeline is `python scripts/generate_registry_data.py`;
+use `python scripts/generate_registry_data.py --check` to verify that the
+generated YAML and bundled package data are synchronized.
+
+Install the generated `0.4.0` wheel from outside the repository root and verify
 its package metadata, bundled YAML data, and public lookup API before publishing.
 <!-- cg:auto:end -->
 
@@ -89,11 +93,17 @@ sr.is_control_flow("foreach")     # True
 sr.is_control_flow("if")          # True
 sr.is_control_flow("regress")     # False
 sr.variable_effect("generate")   # "creates"
+sr.is_include("do")               # True
+sr.is_include("run")              # True
+sr.is_include("include")          # True
+sr.is_include("unknown")          # False
 ```
 
 Registry abbreviations are explicit data: unlisted intermediate forms are not
 inferred. `variable_effect()` reports the documented primary effect; option-
-dependent or secondary effects require separate analysis.
+dependent or secondary effects require separate analysis. `is_include()` reads
+the independent `include_driver` field, which identifies commands that execute
+another Stata source file and never derives that result from `variable_effect`.
 
 The lookup tables are built lazily on first call and are thread-safe. See
 [API Reference](api-reference.md) for the full function signatures and

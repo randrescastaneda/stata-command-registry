@@ -1,6 +1,6 @@
 # API Reference
 
-The `stata_registry` package exposes six pure-lookup functions. All of them
+The `stata_registry` package exposes seven pure-lookup functions. All of them
 operate over the YAML registries bundled with the package (under
 `stata_registry/data/`) and share a lazily-built, thread-safe in-memory index.
 There is no parsing or regex involved — every lookup is a dictionary/set
@@ -50,6 +50,15 @@ raises). `command` may be an abbreviation.
 Return `True` if `command` is a control-flow keyword (e.g. `foreach`,
 `forvalues`, `if`, `else`, `while`). Returns `False` for unknown tokens (never
 raises). `command` may be an abbreviation.
+
+### `is_include(token)`
+
+Return `True` if `token` resolves to a command whose registry entry has
+`include_driver: true`, meaning that it executes commands stored in another
+Stata source file. Accepts canonical names, explicit abbreviations, and aliases
+using the same resolution policy as `canonical_command`. Returns `False` for
+unknown tokens and known non-source-driver commands. It does not infer from
+`variable_effect`.
 <!-- cg:auto:end -->
 
 <!-- cg:auto:parameters -->
@@ -63,6 +72,7 @@ raises). `command` may be an abbreviation.
 | `variable_effect` | `command` | `str` | yes | Canonical name or abbreviation. |
 | `is_prefix` | `command` | `str` | yes | Canonical name or abbreviation. |
 | `is_control_flow` | `command` | `str` | yes | Canonical name or abbreviation. |
+| `is_include` | `token` | `str` | yes | Canonical name, abbreviation, or alias. |
 
 All parameters are required strings and may be passed positionally or by
 keyword. No optional flags are accepted — the API is intentionally minimal.
@@ -79,6 +89,7 @@ keyword. No optional flags are accepted — the API is intentionally minimal.
 | `variable_effect` | `str` | the primary effect enum value | raises `KeyError` or `ValueError` |
 | `is_prefix` | `bool` | `True` / `False` | `False` |
 | `is_control_flow` | `bool` | `True` / `False` | `False` |
+| `is_include` | `bool` | `True` / `False` | `False` |
 
 The `KeyError` raised by `canonical_command` and `category` carries a message
 of the form `Unknown Stata command or abbreviation: '<token>'`.

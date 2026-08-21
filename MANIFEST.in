@@ -1,0 +1,3 @@
+recursive-include commands *.yaml *.json
+include scripts/generate_registry_data.py
+include scripts/source_driver_evidence.yaml

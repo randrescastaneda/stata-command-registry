@@ -8,6 +8,7 @@ with this package:
     canonical_command(token)   -> str   # resolves abbreviations, e.g. "g" -> "generate"
     category(command)          -> str   # returns the category key, e.g. "data_management"
     variable_effect(command)   -> str   # e.g. "creates", "modifies", "none"
+    is_include(token)          -> bool  # do, run, include, and any future source drivers
     is_prefix(command)         -> bool  # bysort, quietly, capture, noisily, …
     is_control_flow(command)   -> bool  # foreach, forvalues, if, else, while, …
 """
@@ -50,6 +51,7 @@ def _build_index(docs: list[dict]) -> tuple[
     Dict[str, str],   # canonical name -> variable_effect
     set[str],         # prefix canonical names
     set[str],         # control-flow canonical names
+    set[str],         # include-driver canonical names
 ]:
     """Build lookup tables from the parsed YAML documents."""
     token_to_canonical: Dict[str, str] = {}
@@ -57,6 +59,7 @@ def _build_index(docs: list[dict]) -> tuple[
     name_to_variable_effect: Dict[str, str] = {}
     prefix_names: set[str] = set()
     control_flow_names: set[str] = set()
+    include_driver_names: set[str] = set()
 
     def register_token(token: str, canonical: str) -> None:
         """Register a token and reject conflicting registry definitions."""
@@ -96,6 +99,8 @@ def _build_index(docs: list[dict]) -> tuple[
                     prefix_names.add(name)
                 if cat_key in _CONTROL_FLOW_CATEGORIES:
                     control_flow_names.add(name)
+                if cmd.get("include_driver") is True:
+                    include_driver_names.add(name)
 
     return (
         token_to_canonical,
@@ -103,6 +108,7 @@ def _build_index(docs: list[dict]) -> tuple[
         name_to_variable_effect,
         prefix_names,
         control_flow_names,
+        include_driver_names,
     )
 
 
@@ -114,6 +120,7 @@ _Index = tuple[
     Dict[str, str],
     Dict[str, str],
     Dict[str, str],
+    set[str],
     set[str],
     set[str],
 ]
@@ -185,9 +192,24 @@ def is_prefix(command: str) -> bool:
     """
     if not isinstance(command, str):
         return False
-    token_to_canonical, _, _, prefix_names, _ = _loaded_index()
+    token_to_canonical, _, _, prefix_names, _, _ = _loaded_index()
     canonical = token_to_canonical.get(command)
     return canonical in prefix_names
+
+
+def is_include(token: str) -> bool:
+    """Return True if *token* resolves to an include-driver command.
+
+    Include drivers execute commands stored in another Stata source file.  The
+    result comes only from the registry's explicit ``include_driver`` field;
+    it is independent of ``variable_effect``.  *token* may be a canonical
+    command name, abbreviation, or alias.  Unknown tokens return ``False``.
+    """
+    if not isinstance(token, str):
+        return False
+    token_to_canonical, _, _, _, _, include_driver_names = _loaded_index()
+    canonical = token_to_canonical.get(token)
+    return canonical in include_driver_names
 
 
 def variable_effect(command: str) -> str:
@@ -219,6 +241,6 @@ def is_control_flow(command: str) -> bool:
     """
     if not isinstance(command, str):
         return False
-    token_to_canonical, _, _, _, control_flow_names = _loaded_index()
+    token_to_canonical, _, _, _, control_flow_names, _ = _loaded_index()
     canonical = token_to_canonical.get(command)
     return canonical in control_flow_names

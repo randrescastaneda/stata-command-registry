@@ -11,12 +11,13 @@ single source of truth, avoiding duplicated command lists.
 
 ## Repository layout
 
-```
+   ```
 commands/                        # Human-editable YAML registries
   official_stata_commands.yaml
   ssc_contributed_commands.yaml
   github_contributed_commands.yaml
   schema.json                    # JSON Schema for the YAML format
+scripts/                         # Source-driver evidence and data generator
 
 stata_registry/                  # Installable Python package
   __init__.py
@@ -47,6 +48,7 @@ categories:
       - name: regress                     # canonical command name (required)
         abbreviations: [reg, regr, regre, regres]  # accepted short forms
         variable_effect: none              # primary effect on variables/data structure
+        include_driver: false              # executes another Stata source file
         aliases: []                       # alternative full names
         since: "3.0"                      # Stata version introduced (optional)
         status: stable                    # stable | experimental | deprecated
@@ -61,6 +63,7 @@ categories:
 | `name` | ✓ | Primary, canonical command name |
 | `abbreviations` | | All accepted abbreviation forms (listed explicitly) |
 | `variable_effect` | | Primary effect: `creates`, `modifies`, `renames`, `removes`, `labels`, `restructures`, or `none`; optional for legacy documents, required for shipped entries |
+| `include_driver` | | Whether the command executes commands stored in another Stata source file; optional for legacy documents, required for shipped entries |
 | `aliases` | | Alternative full names treated identically to `name` |
 | `scope` | | Per-command TextMate scope override (inherits from category if absent) |
 | `since` | | Stata version that introduced the command |
@@ -72,6 +75,15 @@ categories:
 ambiguous commands are `egen: creates`, `recode: modifies`,
 `merge`/`append`/`sort: restructures`, and `keep: removes`. Option-dependent or
 secondary effects are outside this scalar field's primary-effect contract.
+
+`include_driver` is independent metadata for source execution. It does not
+describe effects on variables or data structure, and consumers must not infer
+it from `variable_effect == "none"`. The official StataNow 19 help pages for
+[`do`](https://www.stata.com/help.cgi?do),
+[`run`](https://www.stata.com/help.cgi?run), and
+[`include`](https://www.stata.com/help.cgi?include) establish that all three
+execute commands stored in another file. The registry records this metadata and
+does not require Stata, execute Stata, or parse Stata source code.
 
 ---
 
@@ -92,6 +104,13 @@ secondary effects are outside this scalar field's primary-effect contract.
    check-jsonschema --schemafile commands/schema.json commands/official_stata_commands.yaml
    ```
 
+   Regenerate the explicit source-driver metadata and bundled package data:
+
+   ```bash
+   python scripts/generate_registry_data.py
+   python scripts/generate_registry_data.py --check
+   ```
+
 4. Open a pull request with a brief description of the command.
 
 ---
@@ -103,7 +122,7 @@ secondary effects are outside this scalar field's primary-effect contract.
 ```bash
 pip install stata-registry          # once published to PyPI
 # or directly from this repo:
-pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.3.0
+pip install git+https://github.com/randrescastaneda/stata-command-registry.git@v0.4.0
 ```
 
 ### API
@@ -131,6 +150,11 @@ sr.is_control_flow("foreach")       # True
 sr.is_control_flow("if")            # True
 sr.is_control_flow("regress")       # False
 
+sr.is_include("do")                 # True
+sr.is_include("run")                # True
+sr.is_include("include")            # True
+sr.is_include("notacommand")        # False; unknown tokens never raise
+
 sr.variable_effect("generate")      # "creates"
 sr.variable_effect("replace")       # "modifies"
 sr.variable_effect("drop")          # "removes"
@@ -152,7 +176,7 @@ This project follows [Semantic Versioning](https://semver.org/):
 - **MINOR** version for new commands or categories added in a backwards-compatible way.
 - **PATCH** version for corrections to existing entries.
 
-Consumers should pin to a minor version, e.g. `stata-registry>=0.3,<0.4`.
+Consumers should pin to a minor version, e.g. `stata-registry>=0.4,<0.5`.
 
 ---
 
